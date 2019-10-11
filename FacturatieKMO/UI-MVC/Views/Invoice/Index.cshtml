@@ -1,0 +1,51 @@
+﻿@model IEnumerable<FacturatieKMO.BL.Domain.Invoice>
+
+@{
+    ViewBag.Title = "View";
+}
+
+<h2>View</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.InvoiceNr)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CompanyInfo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CustomerInfo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.InvoiceDate)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.InvoiceNr)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CompanyInfo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CustomerInfo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.InvoiceDate)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>
