@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using FacturatieKMO.BL.Domain;
+﻿using FacturatieKMO.BL.Domain;
 using FacturatieKMO.DAL;
 using FacturatieKMO.DAL.EF;
+using System;
+using System.Collections.Generic;
 
 namespace FacturatieKMO.BL
 {

@@ -1,7 +1,5 @@
-﻿using System;
+﻿using FacturatieKMO.BL.Domain;
 using System.Collections.Generic;
-using System.Text;
-using FacturatieKMO.BL.Domain;
 
 namespace FacturatieKMO.DAL
 {

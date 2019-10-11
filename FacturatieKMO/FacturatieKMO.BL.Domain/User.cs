@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace FacturatieKMO.BL.Domain
+﻿namespace FacturatieKMO.BL.Domain
 {
     public class User
     {

@@ -1,10 +1,8 @@
-﻿using System;
+﻿using FacturatieKMO.BL;
+using FacturatieKMO.BL.Domain;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-using FacturatieKMO.BL;
-using FacturatieKMO.BL.Domain;
 
 namespace AP.UI.Web.MVC.Controllers
 {

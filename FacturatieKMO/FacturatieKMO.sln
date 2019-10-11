@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28010.2003
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29403.142
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UI-MVC", "UI-MVC\UI-MVC.csproj", "{39857671-7499-4EED-8B35-452C744A89E6}"
 EndProject
