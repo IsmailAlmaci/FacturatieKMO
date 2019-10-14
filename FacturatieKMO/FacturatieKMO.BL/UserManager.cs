@@ -17,12 +17,28 @@ namespace FacturatieKMO.BL
 
         public User AddUsers(int id, string name, string firstName, string email, string address, Role role)
         {
-            throw new NotImplementedException();
+            User user = new User(id, name, firstName, email, address, role);
+            return repo.CreateUser(user);
+        }
+
+        public void ChangeUser(User user)
+        {
+            repo.UpdateUser(user);
+        }
+
+        public User GetUser(int userId)
+        {
+            return repo.ReadUser(userId);
         }
 
         public IEnumerable<User> GetUsers()
         {
             return repo.ReadUsers();
+        }
+
+        public void RemoveUser(int userId)
+        {
+            repo.DeleteUser(userId);
         }
     }
 }

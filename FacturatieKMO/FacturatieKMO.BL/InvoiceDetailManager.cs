@@ -17,12 +17,28 @@ namespace FacturatieKMO.BL
 
         public InvoiceDetail AddInvoiceDetails(int id, string item, double price, double discount, int amount, double vat)
         {
-            throw new NotImplementedException();
+            InvoiceDetail invoiceDetail = new InvoiceDetail(id, item, price, discount, amount, vat);
+            return repo.CreateInvoiceDetail(invoiceDetail);
+        }
+
+        public void ChangeInvoiceDetail(InvoiceDetail invoiceDetail)
+        {
+            repo.UpdateInvoiceDetail(invoiceDetail);
+        }
+
+        public InvoiceDetail GetInvoiceDetail(int invoiceDetailId)
+        {
+            return repo.ReadInvoiceDetail(invoiceDetailId);
         }
 
         public IEnumerable<InvoiceDetail> GetInvoiceDetails()
         {
             return repo.ReadInvoiceDetails();
+        }
+
+        public void RemoveInvoiceDetail(int invoiceDetailId)
+        {
+            repo.DeleteInvoiceDetail(invoiceDetailId);
         }
     }
 }

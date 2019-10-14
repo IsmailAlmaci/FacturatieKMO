@@ -11,6 +11,5 @@ namespace FacturatieKMO.DAL
         void DeleteInvoice(int invoiceNr);
         void UpdateInvoice(Invoice invoice);
         IEnumerable<InvoiceDetail> ReadDetails(int invoiceNr);
-        InvoiceDetail CreateInvoiceDetail(InvoiceDetail invoiceDetail);
     }
 }

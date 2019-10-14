@@ -7,5 +7,8 @@ namespace FacturatieKMO.BL
     {
         IEnumerable<InvoiceDetail> GetInvoiceDetails();
         InvoiceDetail AddInvoiceDetails(int id, string item, double price, double discount, int amount, double vat);
+        InvoiceDetail GetInvoiceDetail(int invoiceDetailId);
+        void RemoveInvoiceDetail(int invoiceDetailId);
+        void ChangeInvoiceDetail(InvoiceDetail invoiceDetail);
     }
 }

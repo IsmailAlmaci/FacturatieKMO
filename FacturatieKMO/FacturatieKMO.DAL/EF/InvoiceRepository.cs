@@ -53,13 +53,5 @@ namespace FacturatieKMO.DAL.EF
             IEnumerable<InvoiceDetail> details = ctx.Invoices.Find(invoiceNr).Details.AsEnumerable();
             return details;
         }
-
-        public InvoiceDetail CreateInvoiceDetail(InvoiceDetail invoiceDetail)
-        {
-            ctx.InvoiceDetails.Add(invoiceDetail);
-            ctx.SaveChanges();
-
-            return invoiceDetail;
-        }
     }
 }

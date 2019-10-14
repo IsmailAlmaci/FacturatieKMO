@@ -7,5 +7,8 @@ namespace FacturatieKMO.BL
     {
         IEnumerable<User> GetUsers();
         User AddUsers(int id, string name, string firstName, string email, string address, Role role);
+        User GetUser(int userId);
+        void RemoveUser(int userId);
+        void ChangeUser(User user);
     }
 }

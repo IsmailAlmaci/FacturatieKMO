@@ -17,12 +17,28 @@ namespace FacturatieKMO.BL
 
         public Customer AddCustomers(int id, string name, string firstName, string email, string address)
         {
-            throw new NotImplementedException();
+            Customer customer = new Customer(id, name, firstName, email, address);
+            return repo.CreateCustomer(customer);
+        }
+
+        public void ChangeCustomer(Customer customer)
+        {
+            repo.UpdateCustomer(customer);
+        }
+
+        public Customer GetCustomer(int customerId)
+        {
+            return repo.ReadCustomer(customerId);
         }
 
         public IEnumerable<Customer> GetCustomers()
         {
             return repo.ReadCustomers();
+        }
+
+        public void RemoveCustomer(int customerId)
+        {
+            repo.DeleteCustomer(customerId);
         }
     }
 }
