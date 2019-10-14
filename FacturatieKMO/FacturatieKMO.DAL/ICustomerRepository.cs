@@ -5,7 +5,10 @@ namespace FacturatieKMO.DAL
 {
     public interface ICustomerRepository
     {
-        User CreateCustomer(Customer customer);
+        Customer CreateCustomer(Customer customer);
         IEnumerable<Customer> ReadCustomers();
+        Customer ReadCustomer(int customerId);
+        void DeleteCustomer(int customerId);
+        void UpdateCustomer(Customer customer);
     }
 }

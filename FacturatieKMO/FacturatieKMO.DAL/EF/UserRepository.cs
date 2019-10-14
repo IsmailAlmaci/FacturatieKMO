@@ -17,13 +17,35 @@ namespace FacturatieKMO.DAL.EF
 
         public User CreateUser(User user)
         {
-            throw new NotImplementedException();
+            ctx.Users.Add(user);
+            ctx.SaveChanges();
+
+            return user;
+        }
+
+        public void DeleteUser(int userId)
+        {
+            User user = ctx.Users.Find(userId);
+            ctx.Users.Remove(user);
+            ctx.SaveChanges();
+        }
+
+        public User ReadUser(int UserId)
+        {
+            User user = ctx.Users.Find(UserId);
+            return user;
         }
 
         public IEnumerable<User> ReadUsers()
         {
             IEnumerable<User> users = ctx.Users.AsEnumerable();
             return users;
+        }
+
+        public void UpdateUser(User user)
+        {
+            ctx.Entry(user).State = System.Data.Entity.EntityState.Modified;
+            ctx.SaveChanges();
         }
     }
 }

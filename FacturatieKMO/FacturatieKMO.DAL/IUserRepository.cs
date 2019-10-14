@@ -7,5 +7,8 @@ namespace FacturatieKMO.DAL
     {
         User CreateUser(User user);
         IEnumerable<User> ReadUsers();
+        User ReadUser(int userId);
+        void DeleteUser(int userId);
+        void UpdateUser(User user);
     }
 }

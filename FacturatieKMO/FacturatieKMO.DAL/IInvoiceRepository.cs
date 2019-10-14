@@ -7,5 +7,10 @@ namespace FacturatieKMO.DAL
     {
         Invoice CreateInvoice(Invoice invoice);
         IEnumerable<Invoice> ReadInvoices();
+        Invoice ReadInvoice(int invoiceNr);
+        void DeleteInvoice(int invoiceNr);
+        void UpdateInvoice(Invoice invoice);
+        IEnumerable<InvoiceDetail> ReadDetails(int invoiceNr);
+        InvoiceDetail CreateInvoiceDetail(InvoiceDetail invoiceDetail);
     }
 }
