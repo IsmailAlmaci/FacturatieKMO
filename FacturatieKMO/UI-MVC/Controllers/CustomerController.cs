@@ -19,7 +19,8 @@ namespace AP.UI.Web.MVC.Controllers
         // GET: Customer/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            Customer customer = mgr.GetCustomer(id);
+            return View(customer);
         }
 
         // GET: Customer/Create
@@ -69,6 +70,7 @@ namespace AP.UI.Web.MVC.Controllers
         // GET: Customer/Delete/5
         public ActionResult Delete(int id)
         {
+            mgr.RemoveCustomer(id);
             return View();
         }
 
