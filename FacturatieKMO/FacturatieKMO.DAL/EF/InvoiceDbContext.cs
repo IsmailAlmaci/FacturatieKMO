@@ -1,5 +1,7 @@
 ﻿using FacturatieKMO.BL.Domain;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
+using System.Data.Entity.ModelConfiguration.Conventions;
 
 namespace FacturatieKMO.DAL.EF
 {
@@ -18,16 +20,12 @@ namespace FacturatieKMO.DAL.EF
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.HasDefaultSchema("Admin");
+            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
 
             modelBuilder.Entity<User>().HasKey<int>(u => u.UserId);
             modelBuilder.Entity<Customer>().HasKey<int>(c => c.CustomerId);
             modelBuilder.Entity<Invoice>().HasKey<int>(i => i.InvoiceNr);
             modelBuilder.Entity<InvoiceDetail>().HasKey<int>(i => i.ItemId);
-
-            modelBuilder.Entity<User>().ToTable("Users");
-            modelBuilder.Entity<Customer>().ToTable("Customers");
-            modelBuilder.Entity<Invoice>().ToTable("Invoices");
-            modelBuilder.Entity<InvoiceDetail>().ToTable("InvoiceDetails");
         }
     }
 }

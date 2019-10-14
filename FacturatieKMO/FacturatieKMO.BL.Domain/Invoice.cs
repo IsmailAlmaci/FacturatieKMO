@@ -9,7 +9,7 @@ namespace FacturatieKMO.BL.Domain
         public string CompanyInfo { get; set; }
         public string CustomerInfo { get; set; }
         public DateTime InvoiceDate { get; set; }
-        public ICollection<InvoiceDetail> Responses { get; set; }
+        public ICollection<InvoiceDetail> Details { get; set; }
         public Status InvoiceStatus { get; set; }
 
         public Invoice(int invoiceNr, string companyInfo, string customerInfo, DateTime invoiceDate, ICollection<InvoiceDetail> responses, Status invoiceStatus)
@@ -18,7 +18,7 @@ namespace FacturatieKMO.BL.Domain
             CompanyInfo = companyInfo;
             CustomerInfo = customerInfo;
             InvoiceDate = invoiceDate;
-            Responses = responses;
+            Details = responses;
             InvoiceStatus = invoiceStatus;
         }
     }

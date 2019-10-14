@@ -50,7 +50,7 @@ namespace FacturatieKMO.DAL.EF
 
         public IEnumerable<InvoiceDetail> ReadDetails(int invoiceNr)
         {
-            IEnumerable<InvoiceDetail> details = ctx.Invoices.Find(invoiceNr).Responses.AsEnumerable();
+            IEnumerable<InvoiceDetail> details = ctx.Invoices.Find(invoiceNr).Details.AsEnumerable();
             return details;
         }
 
