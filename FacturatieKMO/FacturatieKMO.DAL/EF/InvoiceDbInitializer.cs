@@ -6,7 +6,7 @@ namespace FacturatieKMO.DAL.EF
     internal class InvoiceDbInitializer
         :DropCreateDatabaseIfModelChanges<InvoiceDbContext>
     {
-        private void Seed(InvoiceDbContext context)
+        protected override void Seed(InvoiceDbContext context)
         {
             context.Users.Add(new User(
                 1,

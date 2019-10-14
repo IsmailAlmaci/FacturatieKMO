@@ -11,13 +11,12 @@ namespace FacturatieKMO.DAL.EF
         }
 
         public DbSet<User> Users { get; set; }
-        public DbSet<Customer> Customers { get; set; }
-        public DbSet<Invoice> Invoices { get; set; }
-        public DbSet<InvoiceDetail> InvoiceDetails { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.HasDefaultSchema("Admin");
+
+            modelBuilder.Entity<User>().HasKey<int>(u => u.UserId);
 
             modelBuilder.Entity<User>().ToTable("UserInfo");
         }

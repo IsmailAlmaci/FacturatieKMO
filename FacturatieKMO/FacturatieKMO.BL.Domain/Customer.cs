@@ -2,7 +2,7 @@
 {
     public class Customer
     {
-        public int UserId { get; set; }
+        public int CustomerId { get; set; }
         public string Name { get; set; }
         public string FirstName { get; set; }
         public string Email { get; set; }
@@ -10,7 +10,7 @@
 
         public Customer(int userId, string name, string firstName, string email, string address)
         {
-            UserId = userId;
+            CustomerId = userId;
             Name = name;
             FirstName = firstName;
             Email = email;
