@@ -15,7 +15,7 @@ namespace FacturatieKMO.BL
             repo = new InvoiceDetailRepository();
         }
 
-        public InvoiceDetail AddInvoiceDetails(string item, double price, double discount, int amount, double vat)
+        public InvoiceDetail AddInvoiceDetails(int id, string item, double price, double discount, int amount, double vat)
         {
             throw new NotImplementedException();
         }

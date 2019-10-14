@@ -9,6 +9,7 @@ namespace FacturatieKMO.DAL.EF
         private void Seed(InvoiceDbContext context)
         {
             context.Users.Add(new User(
+                1,
                 "Almaci",
                 "Ismail",
                 "ismail.almaci@student.ap.be",
@@ -17,6 +18,7 @@ namespace FacturatieKMO.DAL.EF
                 ));
 
             context.Users.Add(new User(
+                2,
                 "Newell",
                 "Gabe",
                 "gaben@student.ap.be",

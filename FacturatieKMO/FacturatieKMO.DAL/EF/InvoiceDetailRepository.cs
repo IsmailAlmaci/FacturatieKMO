@@ -17,6 +17,7 @@ namespace FacturatieKMO.DAL.EF
         private void Seed()
         {
             invoiceDetails.Add(new InvoiceDetail(
+                    1,
                     "Hout",
                     2.65,
                     0,
@@ -25,6 +26,7 @@ namespace FacturatieKMO.DAL.EF
                 ));
 
             invoiceDetails.Add(new InvoiceDetail(
+                    2,
                     "Koper",
                     25.50,
                     10,

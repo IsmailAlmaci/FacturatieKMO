@@ -6,6 +6,6 @@ namespace FacturatieKMO.BL
     public interface ICustomerManager
     {
         IEnumerable<Customer> GetCustomers();
-        Customer AddCustomers(string name, string firstName, string email, string address);
+        Customer AddCustomers(int id, string name, string firstName, string email, string address);
     }
 }

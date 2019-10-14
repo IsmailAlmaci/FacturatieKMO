@@ -1,6 +1,7 @@
 ﻿using FacturatieKMO.BL.Domain;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace FacturatieKMO.DAL.EF
 {

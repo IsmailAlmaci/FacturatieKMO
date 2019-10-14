@@ -15,7 +15,7 @@ namespace FacturatieKMO.BL
             repo = new CustomerRepository();
         }
 
-        public Customer AddCustomers(string name, string firstName, string email, string address)
+        public Customer AddCustomers(int id, string name, string firstName, string email, string address)
         {
             throw new NotImplementedException();
         }
