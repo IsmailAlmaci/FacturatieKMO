@@ -9,6 +9,10 @@
         public int Amount { get; set; }
         public double VAT { get; set; }
 
+        public InvoiceDetail()
+        {
+
+        }
         public InvoiceDetail(int itemId, string item, double pricePerUnit, double discount, int amount, double vAT)
         {
             ItemId = itemId;

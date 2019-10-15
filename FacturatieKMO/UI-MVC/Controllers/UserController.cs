@@ -20,8 +20,8 @@ namespace AP.UI.Web.MVC.Controllers
         // GET: Gebruiker/Details/5
         public ActionResult Details(int id)
         {
-            IEnumerable<User> users = mgr.GetUsers();
-            return View(users.ElementAt(id));
+            User user = mgr.GetUser(id);
+            return View(user);
         }
 
         // GET: Gebruiker/Create
@@ -37,7 +37,12 @@ namespace AP.UI.Web.MVC.Controllers
             try
             {
                 // TODO: Add insert logic here
+                string name = Request.Form["Name"];
+                string firstName = Request.Form["FirstName"];
+                string email = Request.Form["Email"];
+                string address = Request.Form["Address"];
 
+                mgr.AddUsers(3, name, firstName, email, address, Role.User);
                 return RedirectToAction("Index");
             }
             catch
@@ -49,7 +54,7 @@ namespace AP.UI.Web.MVC.Controllers
         // GET: Gebruiker/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            return View(mgr.GetUser(id));
         }
 
         // POST: Gebruiker/Edit/5
@@ -58,7 +63,13 @@ namespace AP.UI.Web.MVC.Controllers
         {
             try
             {
-                // TODO: Add update logic here
+                string name = Request.Form["Name"];
+                string firstName = Request.Form["FirstName"];
+                string email = Request.Form["Email"];
+                string address = Request.Form["Address"];
+
+                User user = new User(id, name, firstName, email, address, Role.User);
+                mgr.ChangeUser(user);
 
                 return RedirectToAction("Index");
             }
@@ -71,7 +82,7 @@ namespace AP.UI.Web.MVC.Controllers
         // GET: Gebruiker/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            return View(mgr.GetUser(id));
         }
 
         // POST: Gebruiker/Delete/5
@@ -81,7 +92,7 @@ namespace AP.UI.Web.MVC.Controllers
             try
             {
                 // TODO: Add delete logic here
-
+                mgr.RemoveUser(id);
                 return RedirectToAction("Index");
             }
             catch

@@ -12,6 +12,10 @@ namespace FacturatieKMO.BL.Domain
         public ICollection<InvoiceDetail> Details { get; set; }
         public Status InvoiceStatus { get; set; }
 
+        public Invoice()
+        {
+
+        }
         public Invoice(int invoiceNr, string companyInfo, string customerInfo, DateTime invoiceDate, ICollection<InvoiceDetail> responses, Status invoiceStatus)
         {
             InvoiceNr = invoiceNr;

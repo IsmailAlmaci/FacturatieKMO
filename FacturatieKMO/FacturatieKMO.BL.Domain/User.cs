@@ -8,6 +8,11 @@
         public string Email { get; set; }
         public string Address { get; set; }
         public Role Role { get; set; }
+
+        public User()
+        {
+
+        }
         public User(int userId, string name, string firstName, string email, string address, Role role)
         {
             UserId = userId;

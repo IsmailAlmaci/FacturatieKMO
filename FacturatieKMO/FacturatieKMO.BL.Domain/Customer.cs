@@ -8,6 +8,10 @@
         public string Email { get; set; }
         public string Address { get; set; }
 
+        public Customer()
+        {
+
+        }
         public Customer(int userId, string name, string firstName, string email, string address)
         {
             CustomerId = userId;
