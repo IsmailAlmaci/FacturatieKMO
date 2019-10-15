@@ -36,7 +36,12 @@ namespace AP.UI.Web.MVC.Controllers
             try
             {
                 // TODO: Add insert logic here
+                string name = Request.Form["Name"];
+                string firstName = Request.Form["FirstName"];
+                string email = Request.Form["Email"];
+                string address = Request.Form["Address"];
 
+                mgr.AddCustomers(1, name, firstName, email, address);
                 return RedirectToAction("Index");
             }
             catch
@@ -48,7 +53,7 @@ namespace AP.UI.Web.MVC.Controllers
         // GET: Customer/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            return View(mgr.GetCustomer(id));
         }
 
         // POST: Customer/Edit/5
@@ -58,7 +63,14 @@ namespace AP.UI.Web.MVC.Controllers
             try
             {
                 // TODO: Add update logic here
+                string name = Request.Form["Name"];
+                string firstName = Request.Form["FirstName"];
+                string email = Request.Form["Email"];
+                string address = Request.Form["Address"];
 
+                Customer customer = new Customer(id, name, firstName, email, address);
+
+                mgr.ChangeCustomer(customer);
                 return RedirectToAction("Index");
             }
             catch
@@ -70,8 +82,7 @@ namespace AP.UI.Web.MVC.Controllers
         // GET: Customer/Delete/5
         public ActionResult Delete(int id)
         {
-            mgr.RemoveCustomer(id);
-            return View();
+            return View(mgr.GetCustomer(id));
         }
 
         // POST: Customer/Delete/5
@@ -81,7 +92,7 @@ namespace AP.UI.Web.MVC.Controllers
             try
             {
                 // TODO: Add delete logic here
-
+                mgr.RemoveCustomer(id);
                 return RedirectToAction("Index");
             }
             catch

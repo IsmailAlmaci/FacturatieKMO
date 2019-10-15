@@ -19,7 +19,7 @@ namespace AP.UI.Web.MVC.Controllers
         // GET: Invoice/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            return View(mgr.GetInvoice(id));
         }
 
         // GET: Invoice/Create
