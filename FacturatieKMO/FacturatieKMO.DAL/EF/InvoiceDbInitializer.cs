@@ -25,6 +25,7 @@ namespace FacturatieKMO.DAL.EF
                 "LA",
                 Role.Administrator
                 ));
+
             context.SaveChanges();
         }
     }

@@ -1,5 +1,6 @@
 ﻿using FacturatieKMO.BL;
 using FacturatieKMO.BL.Domain;
+using System;
 using System.Collections.Generic;
 using System.Web.Mvc;
 
@@ -35,7 +36,14 @@ namespace AP.UI.Web.MVC.Controllers
             try
             {
                 // TODO: Add insert logic here
+                int nr = Convert.ToInt32(Request.Form["InvoiceNr"]);
+                string companyInfo = Request.Form["CompanyInfo"];
+                string customerInfo = Request.Form["CustomerInfo"];
+                DateTime date = DateTime.Now;
+                ICollection<InvoiceDetail> details = null;
+                Status status = Status.InProgress;
 
+                mgr.AddInvoice(nr, companyInfo, customerInfo, date, details, status);
                 return RedirectToAction("Index");
             }
             catch
@@ -47,7 +55,7 @@ namespace AP.UI.Web.MVC.Controllers
         // GET: Invoice/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            return View(mgr.GetInvoice(id));
         }
 
         // POST: Invoice/Edit/5
@@ -57,6 +65,13 @@ namespace AP.UI.Web.MVC.Controllers
             try
             {
                 // TODO: Add update logic here
+                Invoice currentInvoice = mgr.GetInvoice(id);
+                string companyInfo = Request.Form["CompanyInfo"];
+                string customerInfo = Request.Form["CustomerInfo"];
+
+                Invoice invoice = new Invoice(id, companyInfo, customerInfo, 
+                    currentInvoice.InvoiceDate, currentInvoice.Details, currentInvoice.InvoiceStatus);
+                mgr.ChangeInvoice(invoice);
 
                 return RedirectToAction("Index");
             }
@@ -69,7 +84,7 @@ namespace AP.UI.Web.MVC.Controllers
         // GET: Invoice/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            return View(mgr.GetInvoice(id));
         }
 
         // POST: Invoice/Delete/5
@@ -79,7 +94,7 @@ namespace AP.UI.Web.MVC.Controllers
             try
             {
                 // TODO: Add delete logic here
-
+                mgr.RemoveInvoice(id);
                 return RedirectToAction("Index");
             }
             catch
