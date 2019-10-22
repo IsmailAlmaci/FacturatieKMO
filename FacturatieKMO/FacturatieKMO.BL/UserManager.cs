@@ -15,7 +15,7 @@ namespace FacturatieKMO.BL
             repo = new UserRepository();
         }
 
-        public User AddUsers(int id, string name, string firstName, string email, string address, Role role)
+        public User AddUsers(int id, string name, string firstName, string email, string address, List<string> role)
         {
             User user = new User(id, name, firstName, email, address, role);
             return repo.CreateUser(user);
