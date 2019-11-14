@@ -28,6 +28,9 @@ namespace FacturatieKMO.DAL.EF
             modelBuilder.Entity<Invoice>().HasKey<int>(i => i.InvoiceNr);
             modelBuilder.Entity<InvoiceDetail>().HasKey<int>(i => i.ItemId);
             modelBuilder.Entity<Role>().HasKey<int>(i => i.RoleId);
-        }
+
+            modelBuilder.Entity<User>()
+                .HasMany(u => u.Role);
+            }
     }
 }

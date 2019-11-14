@@ -16,5 +16,9 @@ namespace FacturatieKMO.BL.Domain
             RoleId = roleId;
             RoleName = roleName;
         }
+
+        public Role()
+        {
+        }
     }
 }

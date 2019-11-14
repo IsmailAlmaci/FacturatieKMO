@@ -1,4 +1,6 @@
-﻿using System;
+﻿using FacturatieKMO.BL;
+using FacturatieKMO.BL.Domain;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,10 +10,13 @@ namespace AP.UI.Web.MVC.Controllers
 {
     public class RoleController : Controller
     {
+        private IRoleManager mgr = new RoleManager();
+
         // GET: Role
         public ActionResult Index()
         {
-            return View();
+            IEnumerable<Role> roles = mgr.GetRoles();
+            return View(roles);
         }
 
         // GET: Role/Details/5
