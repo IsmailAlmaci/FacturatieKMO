@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace FacturatieKMO.BL.Domain
 {
@@ -9,13 +10,14 @@ namespace FacturatieKMO.BL.Domain
         public string FirstName { get; set; }
         public string Email { get; set; }
         public string Address { get; set; }
-        public List<string> Role { get; set; }
+        [Required]
+        public List<Role> Role { get; set; }
 
         public User()
         {
 
         }
-        public User(int userId, string name, string firstName, string email, string address, List<string> role)
+        public User(int userId, string name, string firstName, string email, string address, List<Role> role)
         {
             UserId = userId;
             Name = name;

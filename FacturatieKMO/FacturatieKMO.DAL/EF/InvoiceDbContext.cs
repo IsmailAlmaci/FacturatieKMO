@@ -16,6 +16,7 @@ namespace FacturatieKMO.DAL.EF
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Invoice> Invoices { get; set; }
         public DbSet<InvoiceDetail> InvoiceDetails { get; set; }
+        public DbSet<Role> Roles { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -26,6 +27,7 @@ namespace FacturatieKMO.DAL.EF
             modelBuilder.Entity<Customer>().HasKey<int>(c => c.CustomerId);
             modelBuilder.Entity<Invoice>().HasKey<int>(i => i.InvoiceNr);
             modelBuilder.Entity<InvoiceDetail>().HasKey<int>(i => i.ItemId);
+            modelBuilder.Entity<Role>().HasKey<int>(i => i.RoleId);
         }
     }
 }

@@ -57,10 +57,12 @@
     <Compile Include="EF\InvoiceDbInitializer.cs" />
     <Compile Include="EF\InvoiceDetailRepository.cs" />
     <Compile Include="EF\InvoiceRepository.cs" />
+    <Compile Include="EF\RoleRepository.cs" />
     <Compile Include="EF\UserRepository.cs" />
     <Compile Include="ICustomerRepository.cs" />
     <Compile Include="IInvoiceDetailRepository.cs" />
     <Compile Include="IInvoiceRepository.cs" />
+    <Compile Include="IRoleRepository.cs" />
     <Compile Include="IUserRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
