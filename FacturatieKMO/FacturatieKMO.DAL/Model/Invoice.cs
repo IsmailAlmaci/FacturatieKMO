@@ -11,6 +11,8 @@ namespace FacturatieKMO.DAL.Model
         public DateTime InvoiceDate { get; set; }
         public ICollection<InvoiceDetail> Details { get; set; }
         public Status InvoiceStatus { get; set; }
+        public Customer Customer { get; set; }
+        public User User { get; set; }
 
         public Invoice()
         {

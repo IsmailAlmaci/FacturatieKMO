@@ -10,6 +10,7 @@ namespace FacturatieKMO.DAL.Model
         public string Email { get; set; }
         public string Address { get; set; }
         public ICollection<Role> Role { get; set; }
+        public ICollection<Invoice> Invoices { get; set; }
 
         public User()
         {

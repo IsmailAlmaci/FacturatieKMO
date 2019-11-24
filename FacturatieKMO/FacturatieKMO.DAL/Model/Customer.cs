@@ -1,4 +1,6 @@
-﻿namespace FacturatieKMO.DAL.Model
+﻿using System.Collections.Generic;
+
+namespace FacturatieKMO.DAL.Model
 { 
     public class Customer
     {
@@ -7,6 +9,7 @@
         public string FirstName { get; set; }
         public string Email { get; set; }
         public string Address { get; set; }
+        public ICollection<Invoice> Invoices { get; set; }
 
         public Customer()
         {
