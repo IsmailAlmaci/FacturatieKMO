@@ -12,6 +12,7 @@
           <Property Name="FirstName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Invoices" Relationship="FacturatieKMO.DAL.EF.CustomerInvoice" FromRole="Customer" ToRole="Invoice" />
         </EntityType>
         <EntityType Name="InvoiceDetail" customannotation:ClrType="FacturatieKMO.DAL.Model.InvoiceDetail, FacturatieKMO.DAL, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
           <Key>
@@ -34,6 +35,10 @@
           <Property Name="InvoiceDate" Type="DateTime" Nullable="false" />
           <Property Name="InvoiceStatus" Type="Self.Status" Nullable="false" />
           <NavigationProperty Name="Details" Relationship="Self.Invoice_Details" FromRole="Invoice_Details_Source" ToRole="Invoice_Details_Target" />
+          <NavigationProperty Name="User" Relationship="FacturatieKMO.DAL.EF.UserInvoice" FromRole="Invoice" ToRole="User" />
+          <Property Name="UserUserId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Customer" Relationship="FacturatieKMO.DAL.EF.CustomerInvoice" FromRole="Invoice" ToRole="Customer" />
+          <Property Name="CustomerCustomerId" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="Role" customannotation:ClrType="FacturatieKMO.DAL.Model.Role, FacturatieKMO.DAL, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
           <Key>
@@ -52,13 +57,14 @@
           <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Role" Relationship="Self.User_Role" FromRole="User_Role_Source" ToRole="User_Role_Target" />
+          <NavigationProperty Name="Invoices" Relationship="FacturatieKMO.DAL.EF.UserInvoice" FromRole="User" ToRole="Invoice" />
         </EntityType>
         <EnumType Name="Status" IsFlags="false" customannotation:ClrType="FacturatieKMO.DAL.Model.Status, FacturatieKMO.DAL, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" UnderlyingType="Int32">
           <Member Name="Completed" Value="0" />
           <Member Name="InProgress" Value="1" />
         </EnumType>
         <Association Name="Invoice_Details">
-          <End Role="Invoice_Details_Source" Type="Self.Invoice" Multiplicity="0..1" />
+          <End Role="Invoice_Details_Source" Type="Self.Invoice" Multiplicity="1" />
           <End Role="Invoice_Details_Target" Type="Self.InvoiceDetail" Multiplicity="*" />
         </Association>
         <Association Name="User_Role">
@@ -79,7 +85,39 @@
             <End Role="User_Role_Source" EntitySet="Users" />
             <End Role="User_Role_Target" EntitySet="Roles" />
           </AssociationSet>
+          <AssociationSet Name="UserInvoice" Association="FacturatieKMO.DAL.EF.UserInvoice">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Invoice" EntitySet="Invoices" />
+          </AssociationSet>
+          <AssociationSet Name="CustomerInvoice" Association="FacturatieKMO.DAL.EF.CustomerInvoice">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="Invoice" EntitySet="Invoices" />
+          </AssociationSet>
         </EntityContainer>
+        <Association Name="UserInvoice">
+          <End Type="FacturatieKMO.DAL.EF.User" Role="User" Multiplicity="1" />
+          <End Type="FacturatieKMO.DAL.EF.Invoice" Role="Invoice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Invoice">
+              <PropertyRef Name="UserUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CustomerInvoice">
+          <End Type="FacturatieKMO.DAL.EF.Customer" Role="Customer" Multiplicity="1" />
+          <End Type="FacturatieKMO.DAL.EF.Invoice" Role="Invoice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerId" />
+            </Principal>
+            <Dependent Role="Invoice">
+              <PropertyRef Name="CustomerCustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </ConceptualModels>
     <Mappings>
@@ -145,7 +183,6 @@
             <EndProperty Name="Invoice_Details_Target">
               <ScalarProperty Name="ItemId" ColumnName="ItemId" />
             </EndProperty>
-            <Condition IsNull="false" ColumnName="Invoice_InvoiceNr" />
           </AssociationSetMapping>
           <AssociationSetMapping Name="User_Role" TypeName="FacturatieKMO.DAL.EF.User_Role" StoreEntitySet="Role">
             <EndProperty Name="User_Role_Source">
@@ -276,6 +313,8 @@
         <EntityTypeShape EntityType="FacturatieKMO.DAL.EF.User" Width="1.5" PointX="0.75" PointY="0.875" IsExpanded="true" />
         <AssociationConnector Association="FacturatieKMO.DAL.EF.Invoice_Details" ManuallyRouted="false" />
         <AssociationConnector Association="FacturatieKMO.DAL.EF.User_Role" ManuallyRouted="false" />
+        <AssociationConnector Association="FacturatieKMO.DAL.EF.UserInvoice" />
+        <AssociationConnector Association="FacturatieKMO.DAL.EF.CustomerInvoice" />
       </Diagram>
     </Diagrams>
   </Designer>
