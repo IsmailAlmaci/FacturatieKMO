@@ -34,13 +34,7 @@ namespace FacturatieKMO.BL
 
         public IEnumerable<CustomerDTO> GetCustomers()
         {
-            IList<CustomerDTO> customers = new List<CustomerDTO>();
-            foreach (Customer customer in repo.ReadCustomers())
-            {
-                customers.Add(MapDTO.Map<CustomerDTO, Customer>(customer));
-            }
-
-            return customers;
+            return MapDTO.MapList<CustomerDTO, Customer>(repo.ReadCustomers());
         }
 
         public void RemoveCustomer(int customerId)
