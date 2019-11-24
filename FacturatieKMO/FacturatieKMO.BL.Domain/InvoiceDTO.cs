@@ -3,20 +3,20 @@ using System.Collections.Generic;
 
 namespace FacturatieKMO.BL.Domain
 {
-    public class Invoice
+    public class InvoiceDTO
     {
         public int InvoiceNr { get; set; }
         public string CompanyInfo { get; set; }
         public string CustomerInfo { get; set; }
         public DateTime InvoiceDate { get; set; }
-        public ICollection<InvoiceDetail> Details { get; set; }
+        public ICollection<InvoiceDetailDTO> Details { get; set; }
         public Status InvoiceStatus { get; set; }
 
-        public Invoice()
+        public InvoiceDTO()
         {
 
         }
-        public Invoice(int invoiceNr, string companyInfo, string customerInfo, DateTime invoiceDate, ICollection<InvoiceDetail> responses, Status invoiceStatus)
+        public InvoiceDTO(int invoiceNr, string companyInfo, string customerInfo, DateTime invoiceDate, ICollection<InvoiceDetailDTO> responses, Status invoiceStatus)
         {
             InvoiceNr = invoiceNr;
             CompanyInfo = companyInfo;

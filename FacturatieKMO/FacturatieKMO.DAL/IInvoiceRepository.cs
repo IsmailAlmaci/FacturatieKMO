@@ -5,11 +5,11 @@ namespace FacturatieKMO.DAL
 {
     public interface IInvoiceRepository
     {
-        Invoice CreateInvoice(Invoice invoice);
-        IEnumerable<Invoice> ReadInvoices();
-        Invoice ReadInvoice(int invoiceNr);
+        InvoiceDTO CreateInvoice(InvoiceDTO invoice);
+        IEnumerable<InvoiceDTO> ReadInvoices();
+        InvoiceDTO ReadInvoice(int invoiceNr);
         void DeleteInvoice(int invoiceNr);
-        void UpdateInvoice(Invoice invoice);
-        IEnumerable<InvoiceDetail> ReadDetails(int invoiceNr);
+        void UpdateInvoice(InvoiceDTO invoice);
+        IEnumerable<InvoiceDetailDTO> ReadDetails(int invoiceNr);
     }
 }

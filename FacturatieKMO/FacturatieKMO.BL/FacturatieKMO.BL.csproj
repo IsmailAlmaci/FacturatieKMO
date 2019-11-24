@@ -41,17 +41,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CustomerManager.cs" />
+    <Compile Include="Manager\CustomerManager.cs" />
     <Compile Include="ICustomerManager.cs" />
     <Compile Include="IInvoiceDetailManager.cs" />
     <Compile Include="IInvoiceManager.cs" />
-    <Compile Include="InvoiceDetailManager.cs" />
-    <Compile Include="InvoiceManager.cs" />
+    <Compile Include="Manager\InvoiceDetailManager.cs" />
+    <Compile Include="Manager\InvoiceManager.cs" />
     <Compile Include="IRoleManager.cs" />
     <Compile Include="IUserManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RoleManager.cs" />
-    <Compile Include="UserManager.cs" />
+    <Compile Include="Manager\RoleManager.cs" />
+    <Compile Include="Manager\UserManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FacturatieKMO.BL.Domain\FacturatieKMO.BL.Domain.csproj">

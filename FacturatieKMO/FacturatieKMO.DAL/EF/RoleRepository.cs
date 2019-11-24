@@ -17,7 +17,7 @@ namespace FacturatieKMO.DAL.EF
             ctx.Database.Initialize(false);
         }
 
-        public Role CreateRole(Role role)
+        public RoleDTO CreateRole(RoleDTO role)
         {
             ctx.Roles.Add(role);
             ctx.SaveChanges();
@@ -27,24 +27,24 @@ namespace FacturatieKMO.DAL.EF
 
         public void DeleteRole(int roleId)
         {
-            Role role = ctx.Roles.Find(roleId);
+            RoleDTO role = ctx.Roles.Find(roleId);
             ctx.Roles.Remove(role);
             ctx.SaveChanges();
         }
 
-        public Role ReadRole(int roleId)
+        public RoleDTO ReadRole(int roleId)
         {
-            Role role = ctx.Roles.Find(roleId);
+            RoleDTO role = ctx.Roles.Find(roleId);
             return role;
         }
 
-        public IEnumerable<Role> ReadRoles()
+        public IEnumerable<RoleDTO> ReadRoles()
         {
-            IEnumerable<Role> roles = ctx.Roles.AsEnumerable();
+            IEnumerable<RoleDTO> roles = ctx.Roles.AsEnumerable();
             return roles;
         }
 
-        public void UpdateRole(Role role)
+        public void UpdateRole(RoleDTO role)
         {
             ctx.Entry(role).State = System.Data.Entity.EntityState.Modified;
             ctx.SaveChanges();

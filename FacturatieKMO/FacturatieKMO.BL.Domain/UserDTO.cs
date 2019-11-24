@@ -2,20 +2,20 @@
 
 namespace FacturatieKMO.BL.Domain
 {
-    public class User
+    public class UserDTO
     {
         public int UserId { get; set; }
         public string Name { get; set; }
         public string FirstName { get; set; }
         public string Email { get; set; }
         public string Address { get; set; }
-        public ICollection<Role> Role { get; set; }
+        public ICollection<RoleDTO> Role { get; set; }
 
-        public User()
+        public UserDTO()
         {
 
         }
-        public User(int userId, string name, string firstName, string email, string address, ICollection<Role> role)
+        public UserDTO(int userId, string name, string firstName, string email, string address, ICollection<RoleDTO> role)
         {
             UserId = userId;
             Name = name;

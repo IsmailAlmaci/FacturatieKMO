@@ -5,10 +5,10 @@ namespace FacturatieKMO.BL
 {
     public interface IInvoiceDetailManager
     {
-        IEnumerable<InvoiceDetail> GetInvoiceDetails();
-        InvoiceDetail AddInvoiceDetails(int id, string item, double price, double discount, int amount, double vat);
-        InvoiceDetail GetInvoiceDetail(int invoiceDetailId);
+        IEnumerable<InvoiceDetailDTO> GetInvoiceDetails();
+        InvoiceDetailDTO AddInvoiceDetails(int id, string item, double price, double discount, int amount, double vat);
+        InvoiceDetailDTO GetInvoiceDetail(int invoiceDetailId);
         void RemoveInvoiceDetail(int invoiceDetailId);
-        void ChangeInvoiceDetail(InvoiceDetail invoiceDetail);
+        void ChangeInvoiceDetail(InvoiceDetailDTO invoiceDetail);
     }
 }

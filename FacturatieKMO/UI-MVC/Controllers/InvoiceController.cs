@@ -13,7 +13,7 @@ namespace AP.UI.Web.MVC.Controllers
         // GET: Invoice
         public ActionResult Index()
         {
-            IEnumerable<Invoice> invoices = mgr.GetInvoices();
+            IEnumerable<InvoiceDTO> invoices = mgr.GetInvoices();
             return View(invoices);
         }
 
@@ -40,7 +40,7 @@ namespace AP.UI.Web.MVC.Controllers
                 string companyInfo = Request.Form["CompanyInfo"];
                 string customerInfo = Request.Form["CustomerInfo"];
                 DateTime date = DateTime.Now;
-                ICollection<InvoiceDetail> details = null;
+                ICollection<InvoiceDetailDTO> details = null;
                 Status status = Status.InProgress;
 
                 mgr.AddInvoice(nr, companyInfo, customerInfo, date, details, status);
@@ -65,11 +65,11 @@ namespace AP.UI.Web.MVC.Controllers
             try
             {
                 // TODO: Add update logic here
-                Invoice currentInvoice = mgr.GetInvoice(id);
+                InvoiceDTO currentInvoice = mgr.GetInvoice(id);
                 string companyInfo = Request.Form["CompanyInfo"];
                 string customerInfo = Request.Form["CustomerInfo"];
 
-                Invoice invoice = new Invoice(id, companyInfo, customerInfo, 
+                InvoiceDTO invoice = new InvoiceDTO(id, companyInfo, customerInfo, 
                     currentInvoice.InvoiceDate, currentInvoice.Details, currentInvoice.InvoiceStatus);
                 mgr.ChangeInvoice(invoice);
 

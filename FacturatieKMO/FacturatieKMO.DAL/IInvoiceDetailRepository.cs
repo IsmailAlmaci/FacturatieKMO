@@ -5,10 +5,10 @@ namespace FacturatieKMO.DAL
 {
     public interface IInvoiceDetailRepository
     {
-        InvoiceDetail CreateInvoiceDetail(InvoiceDetail invoiceDetail);
-        IEnumerable<InvoiceDetail> ReadInvoiceDetails();
-        InvoiceDetail ReadInvoiceDetail(int invoiceDetailId);
+        InvoiceDetailDTO CreateInvoiceDetail(InvoiceDetailDTO invoiceDetail);
+        IEnumerable<InvoiceDetailDTO> ReadInvoiceDetails();
+        InvoiceDetailDTO ReadInvoiceDetail(int invoiceDetailId);
         void DeleteInvoiceDetail(int invoiceDetailId);
-        void UpdateInvoiceDetail(InvoiceDetail invoiceDetail);
+        void UpdateInvoiceDetail(InvoiceDetailDTO invoiceDetail);
     }
 }

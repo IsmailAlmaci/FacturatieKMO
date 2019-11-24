@@ -5,10 +5,10 @@ namespace FacturatieKMO.DAL
 {
     public interface IUserRepository
     {
-        User CreateUser(User user);
-        IEnumerable<User> ReadUsers();
-        User ReadUser(int userId);
+        UserDTO CreateUser(UserDTO user);
+        IEnumerable<UserDTO> ReadUsers();
+        UserDTO ReadUser(int userId);
         void DeleteUser(int userId);
-        void UpdateUser(User user);
+        void UpdateUser(UserDTO user);
     }
 }

@@ -6,18 +6,18 @@ using System.Threading.Tasks;
 
 namespace FacturatieKMO.BL.Domain
 {
-    public class Role
+    public class RoleDTO
     {
         public int RoleId { get; set; }
         public string RoleName { get; set; }
 
-        public Role(int roleId, string roleName)
+        public RoleDTO(int roleId, string roleName)
         {
             RoleId = roleId;
             RoleName = roleName;
         }
 
-        public Role()
+        public RoleDTO()
         {
         }
     }

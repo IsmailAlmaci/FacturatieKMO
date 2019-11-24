@@ -12,7 +12,7 @@ namespace AP.UI.Web.MVC.Controllers
         // GET: InvoiceDetails
         public ActionResult Index()
         {
-            IEnumerable<InvoiceDetail> details = mgr.GetInvoiceDetails();
+            IEnumerable<InvoiceDetailDTO> details = mgr.GetInvoiceDetails();
             return View(details);
         }
 

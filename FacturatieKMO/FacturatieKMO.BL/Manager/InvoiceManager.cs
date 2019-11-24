@@ -15,18 +15,18 @@ namespace FacturatieKMO.BL
             repo = new InvoiceRepository();
         }
 
-        public Invoice AddInvoice(int nr, string companyInfo, string customerInfo, DateTime date, ICollection<InvoiceDetail> details, Status status)
+        public InvoiceDTO AddInvoice(int nr, string companyInfo, string customerInfo, DateTime date, ICollection<InvoiceDetailDTO> details, Status status)
         {
-            Invoice invoice = new Invoice(nr, companyInfo, customerInfo, date, details, status);
+            InvoiceDTO invoice = new InvoiceDTO(nr, companyInfo, customerInfo, date, details, status);
             return repo.CreateInvoice(invoice);
         }
 
-        public Invoice GetInvoice(int invoiceNr)
+        public InvoiceDTO GetInvoice(int invoiceNr)
         {
             return repo.ReadInvoice(invoiceNr);
         }
 
-        public IEnumerable<Invoice> GetInvoices()
+        public IEnumerable<InvoiceDTO> GetInvoices()
         {
             return repo.ReadInvoices();
         }
@@ -36,12 +36,12 @@ namespace FacturatieKMO.BL
             repo.DeleteInvoice(invoiceNr);
         }
 
-        public void ChangeInvoice(Invoice invoice)
+        public void ChangeInvoice(InvoiceDTO invoice)
         {
             repo.UpdateInvoice(invoice);
         }
 
-        public IEnumerable<InvoiceDetail> GetInvoiceDetails(int invoiceNr)
+        public IEnumerable<InvoiceDetailDTO> GetInvoiceDetails(int invoiceNr)
         {
             return repo.ReadDetails(invoiceNr);
         }

@@ -5,10 +5,10 @@ namespace FacturatieKMO.BL
 {
     public interface ICustomerManager
     {
-        IEnumerable<Customer> GetCustomers();
-        Customer AddCustomers(int id, string name, string firstName, string email, string address);
-        Customer GetCustomer(int customerId);
+        IEnumerable<CustomerDTO> GetCustomers();
+        CustomerDTO AddCustomers(int id, string name, string firstName, string email, string address);
+        CustomerDTO GetCustomer(int customerId);
         void RemoveCustomer(int customerId);
-        void ChangeCustomer(Customer customer);
+        void ChangeCustomer(CustomerDTO customer);
     }
 }

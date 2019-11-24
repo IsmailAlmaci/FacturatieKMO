@@ -15,7 +15,7 @@ namespace AP.UI.Web.MVC.Controllers
         // GET: Role
         public ActionResult Index()
         {
-            IEnumerable<Role> roles = mgr.GetRoles();
+            IEnumerable<RoleDTO> roles = mgr.GetRoles();
             return View(roles);
         }
 

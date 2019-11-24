@@ -15,7 +15,7 @@ namespace FacturatieKMO.DAL.EF
             ctx.Database.Initialize(false);
         }
 
-        public Invoice CreateInvoice(Invoice invoice)
+        public InvoiceDTO CreateInvoice(InvoiceDTO invoice)
         {
             ctx.Invoices.Add(invoice);
             ctx.SaveChanges();
@@ -23,34 +23,34 @@ namespace FacturatieKMO.DAL.EF
             return invoice;
         }
 
-        public IEnumerable<Invoice> ReadInvoices()
+        public IEnumerable<InvoiceDTO> ReadInvoices()
         {
-            IEnumerable<Invoice> invoices = ctx.Invoices.AsEnumerable();
+            IEnumerable<InvoiceDTO> invoices = ctx.Invoices.AsEnumerable();
             return invoices;
         }
 
-        public Invoice ReadInvoice(int invoiceNr)
+        public InvoiceDTO ReadInvoice(int invoiceNr)
         {
-            Invoice invoice = ctx.Invoices.Find(invoiceNr);
+            InvoiceDTO invoice = ctx.Invoices.Find(invoiceNr);
             return invoice;
         }
 
         public void DeleteInvoice(int invoiceNr)
         {
-            Invoice invoice = ctx.Invoices.Find(invoiceNr);
+            InvoiceDTO invoice = ctx.Invoices.Find(invoiceNr);
             ctx.Invoices.Remove(invoice);
             ctx.SaveChanges();
         }
 
-        public void UpdateInvoice(Invoice invoice)
+        public void UpdateInvoice(InvoiceDTO invoice)
         {
             ctx.Entry(invoice).State = System.Data.Entity.EntityState.Modified;
             ctx.SaveChanges();
         }
 
-        public IEnumerable<InvoiceDetail> ReadDetails(int invoiceNr)
+        public IEnumerable<InvoiceDetailDTO> ReadDetails(int invoiceNr)
         {
-            IEnumerable<InvoiceDetail> details = ctx.Invoices.Find(invoiceNr).Details.AsEnumerable();
+            IEnumerable<InvoiceDetailDTO> details = ctx.Invoices.Find(invoiceNr).Details.AsEnumerable();
             return details;
         }
     }

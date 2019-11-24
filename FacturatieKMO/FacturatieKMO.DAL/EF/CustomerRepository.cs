@@ -15,7 +15,7 @@ namespace FacturatieKMO.DAL.EF
             ctx.Database.Initialize(false);
         }
 
-        public Customer CreateCustomer(Customer customer)
+        public CustomerDTO CreateCustomer(CustomerDTO customer)
         {
             ctx.Customers.Add(customer);
             ctx.SaveChanges();
@@ -23,26 +23,26 @@ namespace FacturatieKMO.DAL.EF
             return customer;
         }
 
-        public IEnumerable<Customer> ReadCustomers()
+        public IEnumerable<CustomerDTO> ReadCustomers()
         {
-            IEnumerable<Customer> customers = ctx.Customers.AsEnumerable();
+            IEnumerable<CustomerDTO> customers = ctx.Customers.AsEnumerable();
             return customers;
         }
 
-        public Customer ReadCustomer(int customerId)
+        public CustomerDTO ReadCustomer(int customerId)
         {
-            Customer customer = ctx.Customers.Find(customerId);
+            CustomerDTO customer = ctx.Customers.Find(customerId);
             return customer;
         }
 
         public void DeleteCustomer(int customerId)
         {
-            Customer customer = ctx.Customers.Find(customerId);
+            CustomerDTO customer = ctx.Customers.Find(customerId);
             ctx.Customers.Remove(customer);
             ctx.SaveChanges();
         }
 
-        public void UpdateCustomer(Customer customer)
+        public void UpdateCustomer(CustomerDTO customer)
         {
             ctx.Entry(customer).State = System.Data.Entity.EntityState.Modified;
             ctx.SaveChanges();

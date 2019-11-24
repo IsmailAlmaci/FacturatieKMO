@@ -15,23 +15,23 @@ namespace FacturatieKMO.BL
             repo = new InvoiceDetailRepository();
         }
 
-        public InvoiceDetail AddInvoiceDetails(int id, string item, double price, double discount, int amount, double vat)
+        public InvoiceDetailDTO AddInvoiceDetails(int id, string item, double price, double discount, int amount, double vat)
         {
-            InvoiceDetail invoiceDetail = new InvoiceDetail(id, item, price, discount, amount, vat);
+            InvoiceDetailDTO invoiceDetail = new InvoiceDetailDTO(id, item, price, discount, amount, vat);
             return repo.CreateInvoiceDetail(invoiceDetail);
         }
 
-        public void ChangeInvoiceDetail(InvoiceDetail invoiceDetail)
+        public void ChangeInvoiceDetail(InvoiceDetailDTO invoiceDetail)
         {
             repo.UpdateInvoiceDetail(invoiceDetail);
         }
 
-        public InvoiceDetail GetInvoiceDetail(int invoiceDetailId)
+        public InvoiceDetailDTO GetInvoiceDetail(int invoiceDetailId)
         {
             return repo.ReadInvoiceDetail(invoiceDetailId);
         }
 
-        public IEnumerable<InvoiceDetail> GetInvoiceDetails()
+        public IEnumerable<InvoiceDetailDTO> GetInvoiceDetails()
         {
             return repo.ReadInvoiceDetails();
         }

@@ -1,6 +1,6 @@
 ﻿namespace FacturatieKMO.BL.Domain
 {
-    public class InvoiceDetail
+    public class InvoiceDetailDTO
     {
         public int ItemId { get; set; }
         public string Item { get; set; }
@@ -9,11 +9,11 @@
         public int Amount { get; set; }
         public double VAT { get; set; }
 
-        public InvoiceDetail()
+        public InvoiceDetailDTO()
         {
 
         }
-        public InvoiceDetail(int itemId, string item, double pricePerUnit, double discount, int amount, double vAT)
+        public InvoiceDetailDTO(int itemId, string item, double pricePerUnit, double discount, int amount, double vAT)
         {
             ItemId = itemId;
             Item = item;

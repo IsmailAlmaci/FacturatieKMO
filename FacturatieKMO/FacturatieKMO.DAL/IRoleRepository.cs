@@ -9,10 +9,10 @@ namespace FacturatieKMO.DAL
 {
     public interface IRoleRepository
     {
-        Role CreateRole(Role role);
-        IEnumerable<Role> ReadRoles();
-        Role ReadRole(int roleId);
+        RoleDTO CreateRole(RoleDTO role);
+        IEnumerable<RoleDTO> ReadRoles();
+        RoleDTO ReadRole(int roleId);
         void DeleteRole(int roleId);
-        void UpdateRole(Role role);
+        void UpdateRole(RoleDTO role);
     }
 }

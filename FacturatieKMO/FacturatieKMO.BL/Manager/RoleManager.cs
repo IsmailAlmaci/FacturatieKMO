@@ -17,23 +17,23 @@ namespace FacturatieKMO.BL
         {
             repo = new RoleRepository();
         }
-        public Role AddRole(int id, string name)
+        public RoleDTO AddRole(int id, string name)
         {
-            Role role = new Role(id, name);
+            RoleDTO role = new RoleDTO(id, name);
             return repo.CreateRole(role);
         }
 
-        public void ChangeRole(Role role)
+        public void ChangeRole(RoleDTO role)
         {
             repo.UpdateRole(role);
         }
 
-        public Role GetRole(int roleId)
+        public RoleDTO GetRole(int roleId)
         {
             return repo.ReadRole(roleId);
         }
 
-        public IEnumerable<Role> GetRoles()
+        public IEnumerable<RoleDTO> GetRoles()
         {
             return repo.ReadRoles();
         }

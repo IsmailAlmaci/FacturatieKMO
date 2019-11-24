@@ -15,23 +15,23 @@ namespace FacturatieKMO.BL
             repo = new UserRepository();
         }
 
-        public User AddUsers(int id, string name, string firstName, string email, string address, List<Role> role)
+        public UserDTO AddUsers(int id, string name, string firstName, string email, string address, List<RoleDTO> role)
         {
-            User user = new User(id, name, firstName, email, address, role);
+            UserDTO user = new UserDTO(id, name, firstName, email, address, role);
             return repo.CreateUser(user);
         }
 
-        public void ChangeUser(User user)
+        public void ChangeUser(UserDTO user)
         {
             repo.UpdateUser(user);
         }
 
-        public User GetUser(int userId)
+        public UserDTO GetUser(int userId)
         {
             return repo.ReadUser(userId);
         }
 
-        public IEnumerable<User> GetUsers()
+        public IEnumerable<UserDTO> GetUsers()
         {
             return repo.ReadUsers();
         }

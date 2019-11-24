@@ -12,14 +12,14 @@ namespace AP.UI.Web.MVC.Controllers
         // GET: Customer
         public ActionResult Index()
         {
-            IEnumerable<Customer> customers = mgr.GetCustomers();
+            IEnumerable<CustomerDTO> customers = mgr.GetCustomers();
             return View(customers);
         }
 
         // GET: Customer/Details/5
         public ActionResult Details(int id)
         {
-            Customer customer = mgr.GetCustomer(id);
+            CustomerDTO customer = mgr.GetCustomer(id);
             return View(customer);
         }
 
@@ -68,7 +68,7 @@ namespace AP.UI.Web.MVC.Controllers
                 string email = Request.Form["Email"];
                 string address = Request.Form["Address"];
 
-                Customer customer = new Customer(id, name, firstName, email, address);
+                CustomerDTO customer = new CustomerDTO(id, name, firstName, email, address);
 
                 mgr.ChangeCustomer(customer);
                 return RedirectToAction("Index");

@@ -15,23 +15,23 @@ namespace FacturatieKMO.BL
             repo = new CustomerRepository();
         }
 
-        public Customer AddCustomers(int id, string name, string firstName, string email, string address)
+        public CustomerDTO AddCustomers(int id, string name, string firstName, string email, string address)
         {
-            Customer customer = new Customer(id, name, firstName, email, address);
+            CustomerDTO customer = new CustomerDTO(id, name, firstName, email, address);
             return repo.CreateCustomer(customer);
         }
 
-        public void ChangeCustomer(Customer customer)
+        public void ChangeCustomer(CustomerDTO customer)
         {
             repo.UpdateCustomer(customer);
         }
 
-        public Customer GetCustomer(int customerId)
+        public CustomerDTO GetCustomer(int customerId)
         {
             return repo.ReadCustomer(customerId);
         }
 
-        public IEnumerable<Customer> GetCustomers()
+        public IEnumerable<CustomerDTO> GetCustomers()
         {
             return repo.ReadCustomers();
         }

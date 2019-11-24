@@ -13,14 +13,14 @@ namespace AP.UI.Web.MVC.Controllers
         // GET: Gebruiker
         public ActionResult Index()
         {
-            IEnumerable<User> users = mgr.GetUsers();
+            IEnumerable<UserDTO> users = mgr.GetUsers();
             return View(users);
         }
 
         // GET: Gebruiker/Details/5
         public ActionResult Details(int id)
         {
-            User user = mgr.GetUser(id);
+            UserDTO user = mgr.GetUser(id);
             return View(user);
         }
 
@@ -68,7 +68,7 @@ namespace AP.UI.Web.MVC.Controllers
                 string email = Request.Form["Email"];
                 string address = Request.Form["Address"];
 
-                User user = new User(id, name, firstName, email, address, null);
+                UserDTO user = new UserDTO(id, name, firstName, email, address, null);
                 mgr.ChangeUser(user);
 
                 return RedirectToAction("Index");
