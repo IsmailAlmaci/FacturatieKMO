@@ -1,6 +1,7 @@
 ﻿using FacturatieKMO.BL.Domain;
 using FacturatieKMO.DAL;
 using FacturatieKMO.DAL.EF;
+using FacturatieKMO.DAL.Model;
 using System;
 using System.Collections.Generic;
 
@@ -17,23 +18,29 @@ namespace FacturatieKMO.BL
 
         public CustomerDTO AddCustomers(int id, string name, string firstName, string email, string address)
         {
-            CustomerDTO customer = new CustomerDTO(id, name, firstName, email, address);
-            return repo.CreateCustomer(customer);
+            Customer customer = new Customer(id, name, firstName, email, address);
+            return MapDTO.Map<CustomerDTO, Customer>(repo.CreateCustomer(customer));
         }
 
         public void ChangeCustomer(CustomerDTO customer)
         {
-            repo.UpdateCustomer(customer);
+            repo.UpdateCustomer(MapDTO.Map<Customer, CustomerDTO>(customer));
         }
 
         public CustomerDTO GetCustomer(int customerId)
         {
-            return repo.ReadCustomer(customerId);
+            return MapDTO.Map<CustomerDTO, Customer>(repo.ReadCustomer(customerId));
         }
 
         public IEnumerable<CustomerDTO> GetCustomers()
         {
-            return repo.ReadCustomers();
+            IList<CustomerDTO> customers = new List<CustomerDTO>();
+            foreach (Customer customer in repo.ReadCustomers())
+            {
+                customers.Add(MapDTO.Map<CustomerDTO, Customer>(customer));
+            }
+
+            return customers;
         }
 
         public void RemoveCustomer(int customerId)

@@ -1,14 +1,14 @@
-﻿using FacturatieKMO.BL.Domain;
+﻿using FacturatieKMO.DAL.Model;
 using System.Collections.Generic;
 
 namespace FacturatieKMO.DAL
 {
     public interface IUserRepository
     {
-        UserDTO CreateUser(UserDTO user);
-        IEnumerable<UserDTO> ReadUsers();
-        UserDTO ReadUser(int userId);
+        User CreateUser(User user);
+        IEnumerable<User> ReadUsers();
+        User ReadUser(int userId);
         void DeleteUser(int userId);
-        void UpdateUser(UserDTO user);
+        void UpdateUser(User user);
     }
 }

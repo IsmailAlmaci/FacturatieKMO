@@ -1,15 +1,15 @@
-﻿using FacturatieKMO.BL.Domain;
+﻿using FacturatieKMO.DAL.Model;
 using System.Collections.Generic;
 
 namespace FacturatieKMO.DAL
 {
     public interface IInvoiceRepository
     {
-        InvoiceDTO CreateInvoice(InvoiceDTO invoice);
-        IEnumerable<InvoiceDTO> ReadInvoices();
-        InvoiceDTO ReadInvoice(int invoiceNr);
+        Invoice CreateInvoice(Invoice invoice);
+        IEnumerable<Invoice> ReadInvoices();
+        Invoice ReadInvoice(int invoiceNr);
         void DeleteInvoice(int invoiceNr);
-        void UpdateInvoice(InvoiceDTO invoice);
-        IEnumerable<InvoiceDetailDTO> ReadDetails(int invoiceNr);
+        void UpdateInvoice(Invoice invoice);
+        IEnumerable<InvoiceDetail> ReadDetails(int invoiceNr);
     }
 }

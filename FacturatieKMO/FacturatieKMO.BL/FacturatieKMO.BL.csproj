@@ -31,6 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=9.0.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.9.0.0\lib\net461\AutoMapper.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -49,6 +52,7 @@
     <Compile Include="Manager\InvoiceManager.cs" />
     <Compile Include="IRoleManager.cs" />
     <Compile Include="IUserManager.cs" />
+    <Compile Include="MapDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Manager\RoleManager.cs" />
     <Compile Include="Manager\UserManager.cs" />
@@ -62,6 +66,9 @@
       <Project>{f85c845a-d397-4efe-af7b-38f0d96ae3bf}</Project>
       <Name>FacturatieKMO.DAL</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

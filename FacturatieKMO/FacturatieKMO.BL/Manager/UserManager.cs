@@ -1,6 +1,7 @@
 ﻿using FacturatieKMO.BL.Domain;
 using FacturatieKMO.DAL;
 using FacturatieKMO.DAL.EF;
+using FacturatieKMO.DAL.Model;
 using System;
 using System.Collections.Generic;
 
@@ -18,7 +19,7 @@ namespace FacturatieKMO.BL
         public UserDTO AddUsers(int id, string name, string firstName, string email, string address, List<RoleDTO> role)
         {
             UserDTO user = new UserDTO(id, name, firstName, email, address, role);
-            return repo.CreateUser(user);
+            return repo.CreateUser(MapDTO.Map<User, UserDTO>(user));
         }
 
         public void ChangeUser(UserDTO user)

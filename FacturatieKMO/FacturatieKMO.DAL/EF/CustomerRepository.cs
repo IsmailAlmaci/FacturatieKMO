@@ -1,4 +1,4 @@
-﻿using FacturatieKMO.BL.Domain;
+﻿using FacturatieKMO.DAL.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +15,7 @@ namespace FacturatieKMO.DAL.EF
             ctx.Database.Initialize(false);
         }
 
-        public CustomerDTO CreateCustomer(CustomerDTO customer)
+        public Customer CreateCustomer(Customer customer)
         {
             ctx.Customers.Add(customer);
             ctx.SaveChanges();
@@ -23,26 +23,26 @@ namespace FacturatieKMO.DAL.EF
             return customer;
         }
 
-        public IEnumerable<CustomerDTO> ReadCustomers()
+        public IEnumerable<Customer> ReadCustomers()
         {
-            IEnumerable<CustomerDTO> customers = ctx.Customers.AsEnumerable();
+            IEnumerable<Customer> customers = ctx.Customers.AsEnumerable();
             return customers;
         }
 
-        public CustomerDTO ReadCustomer(int customerId)
+        public Customer ReadCustomer(int customerId)
         {
-            CustomerDTO customer = ctx.Customers.Find(customerId);
+            Customer customer = ctx.Customers.Find(customerId);
             return customer;
         }
 
         public void DeleteCustomer(int customerId)
         {
-            CustomerDTO customer = ctx.Customers.Find(customerId);
+            Customer customer = ctx.Customers.Find(customerId);
             ctx.Customers.Remove(customer);
             ctx.SaveChanges();
         }
 
-        public void UpdateCustomer(CustomerDTO customer)
+        public void UpdateCustomer(Customer customer)
         {
             ctx.Entry(customer).State = System.Data.Entity.EntityState.Modified;
             ctx.SaveChanges();

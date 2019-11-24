@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using FacturatieKMO.BL.Domain;
+using FacturatieKMO.DAL.Model;
 
 namespace FacturatieKMO.DAL.EF
 {
@@ -17,7 +17,7 @@ namespace FacturatieKMO.DAL.EF
             ctx.Database.Initialize(false);
         }
 
-        public RoleDTO CreateRole(RoleDTO role)
+        public Role CreateRole(Role role)
         {
             ctx.Roles.Add(role);
             ctx.SaveChanges();
@@ -27,24 +27,24 @@ namespace FacturatieKMO.DAL.EF
 
         public void DeleteRole(int roleId)
         {
-            RoleDTO role = ctx.Roles.Find(roleId);
+            Role role = ctx.Roles.Find(roleId);
             ctx.Roles.Remove(role);
             ctx.SaveChanges();
         }
 
-        public RoleDTO ReadRole(int roleId)
+        public Role ReadRole(int roleId)
         {
-            RoleDTO role = ctx.Roles.Find(roleId);
+            Role role = ctx.Roles.Find(roleId);
             return role;
         }
 
-        public IEnumerable<RoleDTO> ReadRoles()
+        public IEnumerable<Role> ReadRoles()
         {
-            IEnumerable<RoleDTO> roles = ctx.Roles.AsEnumerable();
+            IEnumerable<Role> roles = ctx.Roles.AsEnumerable();
             return roles;
         }
 
-        public void UpdateRole(RoleDTO role)
+        public void UpdateRole(Role role)
         {
             ctx.Entry(role).State = System.Data.Entity.EntityState.Modified;
             ctx.SaveChanges();

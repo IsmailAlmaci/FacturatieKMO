@@ -1,4 +1,4 @@
-﻿using FacturatieKMO.BL.Domain;
+﻿using FacturatieKMO.DAL.Model;
 using System.Collections.Generic;
 using System.Data.Entity;
 
@@ -9,11 +9,11 @@ namespace FacturatieKMO.DAL.EF
     {
         protected override void Seed(InvoiceDbContext context)
         {
-            List<RoleDTO> roles = new List<RoleDTO>();
-            roles.Add(new RoleDTO(1, "Admin"));
-            roles.Add(new RoleDTO(2, "User"));
+            List<Role> roles = new List<Role>();
+            roles.Add(new Role(1, "Admin"));
+            roles.Add(new Role(2, "User"));
 
-            context.Users.Add(new UserDTO(1, "Almaci", "Ismail", "s104428@ap.be", "Sint-Gillis-Waas", roles));
+            context.Users.Add(new User(1, "Almaci", "Ismail", "s104428@ap.be", "Sint-Gillis-Waas", roles));
             context.SaveChanges();
         }
     }

@@ -1,4 +1,4 @@
-﻿using FacturatieKMO.BL.Domain;
+﻿using FacturatieKMO.DAL.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,10 +9,10 @@ namespace FacturatieKMO.DAL
 {
     public interface IRoleRepository
     {
-        RoleDTO CreateRole(RoleDTO role);
-        IEnumerable<RoleDTO> ReadRoles();
-        RoleDTO ReadRole(int roleId);
+        Role CreateRole(Role role);
+        IEnumerable<Role> ReadRoles();
+        Role ReadRole(int roleId);
         void DeleteRole(int roleId);
-        void UpdateRole(RoleDTO role);
+        void UpdateRole(Role role);
     }
 }

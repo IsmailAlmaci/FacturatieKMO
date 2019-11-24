@@ -1,7 +1,7 @@
-﻿using FacturatieKMO.BL.Domain;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using FacturatieKMO.DAL.Model
 
 namespace FacturatieKMO.DAL.EF
 {
@@ -15,7 +15,7 @@ namespace FacturatieKMO.DAL.EF
             ctx.Database.Initialize(false);
         }
 
-        public InvoiceDetailDTO CreateInvoiceDetail(InvoiceDetailDTO invoiceDetail)
+        public InvoiceDetail CreateInvoiceDetail(InvoiceDetail invoiceDetail)
         {
             ctx.InvoiceDetails.Add(invoiceDetail);
             ctx.SaveChanges();
@@ -23,26 +23,26 @@ namespace FacturatieKMO.DAL.EF
             return invoiceDetail;
         }
 
-        public IEnumerable<InvoiceDetailDTO> ReadInvoiceDetails()
+        public IEnumerable<InvoiceDetail> ReadInvoiceDetails()
         {
-            IEnumerable<InvoiceDetailDTO> invoiceDetails = ctx.InvoiceDetails.AsEnumerable();
+            IEnumerable<InvoiceDetail> invoiceDetails = ctx.InvoiceDetails.AsEnumerable();
             return invoiceDetails;
         }
 
-        public InvoiceDetailDTO ReadInvoiceDetail(int invoiceDetailId)
+        public InvoiceDetail ReadInvoiceDetail(int invoiceDetailId)
         {
-            InvoiceDetailDTO invoiceDetail = ctx.InvoiceDetails.Find(invoiceDetailId);
+            InvoiceDetail invoiceDetail = ctx.InvoiceDetails.Find(invoiceDetailId);
             return invoiceDetail;
         }
 
         public void DeleteInvoiceDetail(int invoiceDetailId)
         {
-            InvoiceDetailDTO invoiceDetail = ctx.InvoiceDetails.Find(invoiceDetailId);
+            InvoiceDetail invoiceDetail = ctx.InvoiceDetails.Find(invoiceDetailId);
             ctx.InvoiceDetails.Remove(invoiceDetail);
             ctx.SaveChanges();
         }
 
-        public void UpdateInvoiceDetail(InvoiceDetailDTO invoiceDetail)
+        public void UpdateInvoiceDetail(InvoiceDetail invoiceDetail)
         {
             ctx.Entry(invoiceDetail).State = System.Data.Entity.EntityState.Modified;
             ctx.SaveChanges();

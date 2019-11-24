@@ -1,4 +1,4 @@
-﻿using FacturatieKMO.BL.Domain;
+﻿using FacturatieKMO.DAL.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +15,7 @@ namespace FacturatieKMO.DAL.EF
             ctx.Database.Initialize(false);
         }
 
-        public InvoiceDTO CreateInvoice(InvoiceDTO invoice)
+        public Invoice CreateInvoice(Invoice invoice)
         {
             ctx.Invoices.Add(invoice);
             ctx.SaveChanges();
@@ -23,34 +23,34 @@ namespace FacturatieKMO.DAL.EF
             return invoice;
         }
 
-        public IEnumerable<InvoiceDTO> ReadInvoices()
+        public IEnumerable<Invoice> ReadInvoices()
         {
-            IEnumerable<InvoiceDTO> invoices = ctx.Invoices.AsEnumerable();
+            IEnumerable<Invoice> invoices = ctx.Invoices.AsEnumerable();
             return invoices;
         }
 
-        public InvoiceDTO ReadInvoice(int invoiceNr)
+        public Invoice ReadInvoice(int invoiceNr)
         {
-            InvoiceDTO invoice = ctx.Invoices.Find(invoiceNr);
+            Invoice invoice = ctx.Invoices.Find(invoiceNr);
             return invoice;
         }
 
         public void DeleteInvoice(int invoiceNr)
         {
-            InvoiceDTO invoice = ctx.Invoices.Find(invoiceNr);
+            Invoice invoice = ctx.Invoices.Find(invoiceNr);
             ctx.Invoices.Remove(invoice);
             ctx.SaveChanges();
         }
 
-        public void UpdateInvoice(InvoiceDTO invoice)
+        public void UpdateInvoice(Invoice invoice)
         {
             ctx.Entry(invoice).State = System.Data.Entity.EntityState.Modified;
             ctx.SaveChanges();
         }
 
-        public IEnumerable<InvoiceDetailDTO> ReadDetails(int invoiceNr)
+        public IEnumerable<InvoiceDetail> ReadDetails(int invoiceNr)
         {
-            IEnumerable<InvoiceDetailDTO> details = ctx.Invoices.Find(invoiceNr).Details.AsEnumerable();
+            IEnumerable<InvoiceDetail> details = ctx.Invoices.Find(invoiceNr).Details.AsEnumerable();
             return details;
         }
     }

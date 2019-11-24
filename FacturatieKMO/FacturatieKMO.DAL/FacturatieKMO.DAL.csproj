@@ -64,6 +64,12 @@
     <Compile Include="IInvoiceRepository.cs" />
     <Compile Include="IRoleRepository.cs" />
     <Compile Include="IUserRepository.cs" />
+    <Compile Include="Model\Customer.cs" />
+    <Compile Include="Model\InvoiceDetail.cs" />
+    <Compile Include="Model\Invoice.cs" />
+    <Compile Include="Model\Role.cs" />
+    <Compile Include="Model\Status.cs" />
+    <Compile Include="Model\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
