@@ -41,7 +41,7 @@ namespace AP.UI.Web.MVC.Controllers
                 string customerInfo = Request.Form["CustomerInfo"];
                 DateTime date = DateTime.Now;
                 ICollection<InvoiceDetailDTO> details = null;
-                Status status = Status.InProgress;
+                StatusDTO status = StatusDTO.InProgress;
 
                 mgr.AddInvoice(nr, companyInfo, customerInfo, date, details, status);
                 return RedirectToAction("Index");

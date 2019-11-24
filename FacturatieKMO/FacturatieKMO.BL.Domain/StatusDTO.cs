@@ -1,6 +1,6 @@
 ﻿namespace FacturatieKMO.BL.Domain
 {
-    public enum Status
+    public enum StatusDTO
     {
         Completed,
         InProgress

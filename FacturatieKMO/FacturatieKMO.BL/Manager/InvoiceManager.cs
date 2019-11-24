@@ -1,8 +1,10 @@
 ﻿using FacturatieKMO.BL.Domain;
 using FacturatieKMO.DAL;
 using FacturatieKMO.DAL.EF;
+using FacturatieKMO.DAL.Model;
 using System;
 using System.Collections.Generic;
+using Status = FacturatieKMO.DAL.Model.Status;
 
 namespace FacturatieKMO.BL
 {
@@ -15,20 +17,25 @@ namespace FacturatieKMO.BL
             repo = new InvoiceRepository();
         }
 
-        public InvoiceDTO AddInvoice(int nr, string companyInfo, string customerInfo, DateTime date, ICollection<InvoiceDetailDTO> details, Status status)
+        public InvoiceDTO AddInvoice(int nr, string companyInfo, string customerInfo, DateTime date, ICollection<InvoiceDetailDTO> details, Domain.StatusDTO status)
         {
-            InvoiceDTO invoice = new InvoiceDTO(nr, companyInfo, customerInfo, date, details, status);
-            return repo.CreateInvoice(invoice);
+            ICollection<InvoiceDetail> invoiceDetails = new List<InvoiceDetail>();
+            foreach (InvoiceDetailDTO item in details)
+            {
+                invoiceDetails.Add(MapDTO.Map<InvoiceDetail, InvoiceDetailDTO>(item));
+            }
+            Invoice invoice = new Invoice(nr, companyInfo, customerInfo, date, invoiceDetails, MapDTO.Map<Status, StatusDTO>(status));
+            return MapDTO.Map<InvoiceDTO, Invoice>(repo.CreateInvoice(invoice));
         }
 
         public InvoiceDTO GetInvoice(int invoiceNr)
         {
-            return repo.ReadInvoice(invoiceNr);
+            return MapDTO.Map<InvoiceDTO, Invoice>(repo.ReadInvoice(invoiceNr));
         }
 
         public IEnumerable<InvoiceDTO> GetInvoices()
         {
-            return repo.ReadInvoices();
+            return MapDTO.MapList<InvoiceDTO, Invoice>(repo.ReadInvoices());
         }
 
         public void RemoveInvoice(int invoiceNr)
@@ -38,12 +45,12 @@ namespace FacturatieKMO.BL
 
         public void ChangeInvoice(InvoiceDTO invoice)
         {
-            repo.UpdateInvoice(invoice);
+            repo.UpdateInvoice(MapDTO.Map<Invoice, InvoiceDTO>(invoice));
         }
 
         public IEnumerable<InvoiceDetailDTO> GetInvoiceDetails(int invoiceNr)
         {
-            return repo.ReadDetails(invoiceNr);
+            return MapDTO.MapList<InvoiceDetailDTO, InvoiceDetail>(repo.ReadDetails(invoiceNr));
         }
     }
 }

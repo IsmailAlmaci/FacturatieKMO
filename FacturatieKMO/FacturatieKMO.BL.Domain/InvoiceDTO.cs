@@ -10,13 +10,13 @@ namespace FacturatieKMO.BL.Domain
         public string CustomerInfo { get; set; }
         public DateTime InvoiceDate { get; set; }
         public ICollection<InvoiceDetailDTO> Details { get; set; }
-        public Status InvoiceStatus { get; set; }
+        public StatusDTO InvoiceStatus { get; set; }
 
         public InvoiceDTO()
         {
 
         }
-        public InvoiceDTO(int invoiceNr, string companyInfo, string customerInfo, DateTime invoiceDate, ICollection<InvoiceDetailDTO> responses, Status invoiceStatus)
+        public InvoiceDTO(int invoiceNr, string companyInfo, string customerInfo, DateTime invoiceDate, ICollection<InvoiceDetailDTO> responses, StatusDTO invoiceStatus)
         {
             InvoiceNr = invoiceNr;
             CompanyInfo = companyInfo;
