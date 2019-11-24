@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using FacturatieKMO.BL.Domain;
 using FacturatieKMO.DAL;
 using FacturatieKMO.DAL.EF;
+using FacturatieKMO.DAL.Model;
 
 namespace FacturatieKMO.BL
 {
@@ -19,23 +20,23 @@ namespace FacturatieKMO.BL
         }
         public RoleDTO AddRole(int id, string name)
         {
-            RoleDTO role = new RoleDTO(id, name);
-            return repo.CreateRole(role);
+            Role role = new Role(id, name);
+            return MapDTO.Map<RoleDTO, Role>(repo.CreateRole(role));
         }
 
         public void ChangeRole(RoleDTO role)
         {
-            repo.UpdateRole(role);
+            repo.UpdateRole(MapDTO.Map<Role, RoleDTO>(role));
         }
 
         public RoleDTO GetRole(int roleId)
         {
-            return repo.ReadRole(roleId);
+            return MapDTO.Map<RoleDTO, Role>(repo.ReadRole(roleId));
         }
 
         public IEnumerable<RoleDTO> GetRoles()
         {
-            return repo.ReadRoles();
+            return MapDTO.MapList<RoleDTO, Role>(repo.ReadRoles());
         }
 
         public void RemoveRoler(int roleId)

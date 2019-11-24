@@ -18,23 +18,28 @@ namespace FacturatieKMO.BL
 
         public UserDTO AddUsers(int id, string name, string firstName, string email, string address, List<RoleDTO> role)
         {
-            UserDTO user = new UserDTO(id, name, firstName, email, address, role);
-            return repo.CreateUser(MapDTO.Map<User, UserDTO>(user));
+            ICollection<Role> roles = new List<Role>();
+            foreach (RoleDTO item in role)
+            {
+                roles.Add(MapDTO.Map<Role, RoleDTO>(item));
+            }
+            User user = new User(id, name, firstName, email, address, roles);
+            return MapDTO.Map<UserDTO, User>(repo.CreateUser(user));
         }
 
         public void ChangeUser(UserDTO user)
         {
-            repo.UpdateUser(user);
+            repo.UpdateUser(MapDTO.Map<User, UserDTO>(user));
         }
 
         public UserDTO GetUser(int userId)
         {
-            return repo.ReadUser(userId);
+            return MapDTO.Map<UserDTO, User>(repo.ReadUser(userId));
         }
 
         public IEnumerable<UserDTO> GetUsers()
         {
-            return repo.ReadUsers();
+            return MapDTO.MapList<UserDTO, User>(repo.ReadUsers());
         }
 
         public void RemoveUser(int userId)

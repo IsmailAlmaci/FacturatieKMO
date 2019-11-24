@@ -18,23 +18,23 @@ namespace FacturatieKMO.BL
 
         public InvoiceDetailDTO AddInvoiceDetails(int id, string item, double price, double discount, int amount, double vat)
         {
-            InvoiceDetailDTO invoiceDetail = new InvoiceDetailDTO(id, item, price, discount, amount, vat);
-            return repo.CreateInvoiceDetail(MapDTO.Map<InvoiceDetailDTO, InvoiceDetail>(invoiceDetail));
+            InvoiceDetail invoiceDetail = new InvoiceDetail(id, item, price, discount, amount, vat);
+            return MapDTO.Map<InvoiceDetailDTO, InvoiceDetail>(repo.CreateInvoiceDetail(invoiceDetail));
         }
 
         public void ChangeInvoiceDetail(InvoiceDetailDTO invoiceDetail)
         {
-            repo.UpdateInvoiceDetail(invoiceDetail);
+            repo.UpdateInvoiceDetail(MapDTO.Map<InvoiceDetail, InvoiceDetailDTO>(invoiceDetail));
         }
 
         public InvoiceDetailDTO GetInvoiceDetail(int invoiceDetailId)
         {
-            return repo.ReadInvoiceDetail(invoiceDetailId);
+            return MapDTO.Map<InvoiceDetailDTO, InvoiceDetail>(repo.ReadInvoiceDetail(invoiceDetailId));
         }
 
         public IEnumerable<InvoiceDetailDTO> GetInvoiceDetails()
         {
-            return repo.ReadInvoiceDetails();
+            return MapDTO.MapList<InvoiceDetailDTO, InvoiceDetail>(repo.ReadInvoiceDetails());
         }
 
         public void RemoveInvoiceDetail(int invoiceDetailId)
