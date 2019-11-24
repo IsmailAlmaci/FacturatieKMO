@@ -11,6 +11,11 @@ namespace FacturatieKMO.DAL.Model
         public string Address { get; set; }
         public ICollection<Role> Role { get; set; }
 
+        public User()
+        {
+
+        }
+
         public User(int userId, string name, string firstName, string email, string address, ICollection<Role> role)
         {
             UserId = userId;

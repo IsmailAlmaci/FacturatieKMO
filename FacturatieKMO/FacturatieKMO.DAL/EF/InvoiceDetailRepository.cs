@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using FacturatieKMO.DAL.Model
+using FacturatieKMO.DAL.Model;
 
 namespace FacturatieKMO.DAL.EF
 {
