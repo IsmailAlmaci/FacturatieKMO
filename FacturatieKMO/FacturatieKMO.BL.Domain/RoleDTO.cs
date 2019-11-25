@@ -4,17 +4,15 @@
     {
         public int RoleId { get; set; }
         public string RoleName { get; set; }
-        public UserDTO User { get; set; }
 
         public RoleDTO()
         {
         }
 
-        public RoleDTO(int roleId, string roleName, UserDTO user)
+        public RoleDTO(int roleId, string roleName)
         {
             RoleId = roleId;
             RoleName = roleName;
-            User = user;
         }
     }
 }

@@ -51,6 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataHolder.cs" />
     <Compile Include="EF\CustomerRepository.cs" />
     <Compile Include="EF\InvoiceDbConfiguration.cs" />
     <Compile Include="EF\InvoiceDbContext.cs" />

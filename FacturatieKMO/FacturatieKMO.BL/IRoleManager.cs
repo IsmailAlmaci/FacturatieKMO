@@ -10,7 +10,7 @@ namespace FacturatieKMO.BL
     public interface IRoleManager
     {
         IEnumerable<RoleDTO> GetRoles();
-        RoleDTO AddRole(int id, string name, UserDTO user);
+        RoleDTO AddRole(int id, string name);
         RoleDTO GetRole(int roleId);
         void RemoveRoler(int roleId);
         void ChangeRole(RoleDTO role);

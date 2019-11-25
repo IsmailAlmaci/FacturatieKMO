@@ -18,9 +18,9 @@ namespace FacturatieKMO.BL
         {
             repo = new RoleRepository();
         }
-        public RoleDTO AddRole(int id, string name, UserDTO user)
+        public RoleDTO AddRole(int id, string name)
         {
-            Role role = new Role(id, name, MapDTO.Map<User, UserDTO>(user));
+            Role role = new Role(id, name);
             return MapDTO.Map<RoleDTO, Role>(repo.CreateRole(role));
         }
 
