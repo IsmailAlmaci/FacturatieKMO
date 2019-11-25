@@ -41,7 +41,7 @@ namespace AP.UI.Web.MVC.Controllers
                 string email = Request.Form["Email"];
                 string address = Request.Form["Address"];
 
-                mgr.AddCustomers(1, name, firstName, email, address);
+                mgr.AddCustomers(1, name, firstName, email, address, null);
                 return RedirectToAction("Index");
             }
             catch
@@ -68,7 +68,7 @@ namespace AP.UI.Web.MVC.Controllers
                 string email = Request.Form["Email"];
                 string address = Request.Form["Address"];
 
-                CustomerDTO customer = new CustomerDTO(id, name, firstName, email, address);
+                CustomerDTO customer = new CustomerDTO(id, name, firstName, email, address, null);
 
                 mgr.ChangeCustomer(customer);
                 return RedirectToAction("Index");

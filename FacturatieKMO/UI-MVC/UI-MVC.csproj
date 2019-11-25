@@ -213,11 +213,11 @@
     <Content Include="Views\InvoiceDetail\Delete.cshtml" />
     <Content Include="Views\InvoiceDetail\Details.cshtml" />
     <Content Include="Views\InvoiceDetail\Edit.cshtml" />
-    <Content Include="Views\User\Index.cshtml" />
     <Content Include="Views\Role\Index.cshtml" />
     <Content Include="Views\User\Edit.cshtml" />
     <Content Include="Views\Customer\Index.cshtml" />
     <Content Include="Views\Customer\Create.cshtml" />
+    <Content Include="Views\User\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

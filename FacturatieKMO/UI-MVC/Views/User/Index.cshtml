@@ -1,4 +1,4 @@
-﻿@model IEnumerable<FacturatieKMO.BL.Domain.User>
+﻿@model IEnumerable<FacturatieKMO.BL.Domain.UserDTO>
 
 @{
     ViewBag.Title = "Index";
@@ -12,6 +12,9 @@
 <table class="table">
     <tr>
         <th>
+            @Html.DisplayNameFor(model => model.UserId)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.Name)
         </th>
         <th>
@@ -23,38 +26,32 @@
         <th>
             @Html.DisplayNameFor(model => model.Address)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Role)
-        </th>
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
-<tr>
-    <td>
-        @Html.DisplayFor(modelItem => item.Name)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.FirstName)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Email)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Address)
-    </td>
-    @foreach (var role in item.Role)
-    {
+    <tr>
         <td>
-            @Html.DisplayFor(modelItem => role.RoleName)
+            @Html.DisplayFor(modelItem => item.UserId)
         </td>
-    }
-    <td>
-        @Html.ActionLink("Edit", "Edit", new { id = item.UserId }) |
-        @Html.ActionLink("Details", "Details", new { id = item.UserId }) |
-        @Html.ActionLink("Delete", "Delete", new { id = item.UserId })
-    </td>
-</tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Address)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
 }
 
 </table>

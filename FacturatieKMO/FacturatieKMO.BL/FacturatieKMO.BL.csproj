@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EmailService.cs" />
     <Compile Include="Manager\CustomerManager.cs" />
     <Compile Include="ICustomerManager.cs" />
     <Compile Include="IInvoiceDetailManager.cs" />
