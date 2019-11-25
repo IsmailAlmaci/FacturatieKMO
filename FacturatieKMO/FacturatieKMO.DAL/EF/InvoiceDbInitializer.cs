@@ -9,12 +9,21 @@ namespace FacturatieKMO.DAL.EF
     {
         protected override void Seed(InvoiceDbContext context)
         {
-            List<Role> roles = new List<Role>();
-            roles.Add(new Role(1, "Admin"));
-            roles.Add(new Role(2, "User"));
+            SeedList<Customer>(DataHolder.GetCustomers(), context.Customers);
+            SeedList<Invoice>(DataHolder.GetInvoices(), context.Invoices);
+            SeedList<InvoiceDetail>(DataHolder.GetInvoiceDetails(), context.InvoiceDetails);
+            SeedList<User>(DataHolder.GetUsers(), context.Users);
+            SeedList<Role>(DataHolder.GetRoles(), context.Roles);
 
-            context.Users.Add(new User(1, "Almaci", "Ismail", "s104428@ap.be", "Sint-Gillis-Waas", roles, null));
             context.SaveChanges();
+        }
+
+        private void SeedList<TEntity> (List<TEntity> items, DbSet<TEntity> dbSet) where TEntity : class
+        {
+            foreach (TEntity item in items)
+            {
+                dbSet.Add(item);
+            }
         }
     }
 }

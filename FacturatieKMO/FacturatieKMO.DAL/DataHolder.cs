@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace FacturatieKMO.DAL
 {
-    static class DataHolder
+    internal static class DataHolder
     {
-        static List<Customer> GetCustomers()
+        internal static List<Customer> GetCustomers()
         {
             List<Customer> customers = new List<Customer>();
             customers.Add(new Customer(1, "Almaci", "Ismail", "ismail.almaci@student.ap.be", "SGW", GetInvoices()));
@@ -21,7 +21,7 @@ namespace FacturatieKMO.DAL
             return customers;
         }
 
-        static List<Invoice> GetInvoices()
+        internal static List<Invoice> GetInvoices()
         {
             int counter = 0;
             List<Invoice> invoices = new List<Invoice>();
@@ -43,7 +43,7 @@ namespace FacturatieKMO.DAL
             return invoices;
         }
 
-        static List<InvoiceDetail> GetInvoiceDetails()
+        internal static List<InvoiceDetail> GetInvoiceDetails()
         {
             List<InvoiceDetail> invoiceDetails = new List<InvoiceDetail>();
             invoiceDetails.Add(new InvoiceDetail(1, "Plank", 5, 0, 20, 6));
@@ -55,7 +55,7 @@ namespace FacturatieKMO.DAL
             return invoiceDetails;
         }
 
-        static List<Role> GetRoles()
+        internal static List<Role> GetRoles()
         {
             List<Role> roles = new List<Role>();
             roles.Add(new Role(1, "Medewerker"));
@@ -64,7 +64,7 @@ namespace FacturatieKMO.DAL
             return roles;
         }
 
-        static List<User> GetUsers()
+        internal static List<User> GetUsers()
         {
             List<User> users = new List<User>();
             users.Add(new User(1, "Almaci", "Ismail", "ismail.almaci@student.ap.be", "SGW", GetRoles(), GetInvoices()));
