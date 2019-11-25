@@ -42,7 +42,7 @@ namespace AP.UI.Web.MVC.Controllers
                 string email = Request.Form["Email"];
                 string address = Request.Form["Address"];
 
-                mgr.AddUsers(3, name, firstName, email, address, null);
+                mgr.AddUsers(3, name, firstName, email, address, null, null);
                 return RedirectToAction("Index");
             }
             catch
@@ -68,7 +68,7 @@ namespace AP.UI.Web.MVC.Controllers
                 string email = Request.Form["Email"];
                 string address = Request.Form["Address"];
 
-                UserDTO user = new UserDTO(id, name, firstName, email, address, null);
+                UserDTO user = new UserDTO(id, name, firstName, email, address, null, null);
                 mgr.ChangeUser(user);
 
                 return RedirectToAction("Index");

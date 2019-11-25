@@ -7,7 +7,7 @@ namespace FacturatieKMO.BL
     public interface IInvoiceManager
     {
         IEnumerable<InvoiceDTO> GetInvoices();
-        InvoiceDTO AddInvoice(int number, string companyInfo, string customerInfo, DateTime date, ICollection<InvoiceDetailDTO> details, StatusDTO status);
+        InvoiceDTO AddInvoice(int number, string companyInfo, string customerInfo, DateTime date, ICollection<InvoiceDetailDTO> details, StatusDTO status, CustomerDTO customer, UserDTO user);
         InvoiceDTO GetInvoice(int invoiceNr);
         void RemoveInvoice(int invoiceNr);
         void ChangeInvoice(InvoiceDTO invoice);

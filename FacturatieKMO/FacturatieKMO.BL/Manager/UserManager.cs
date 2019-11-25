@@ -16,14 +16,22 @@ namespace FacturatieKMO.BL
             repo = new UserRepository();
         }
 
-        public UserDTO AddUsers(int id, string name, string firstName, string email, string address, List<RoleDTO> role)
+        public UserDTO AddUsers(int id, string name, string firstName, string email, string address, List<RoleDTO> role, List<InvoiceDTO> invoices)
         {
             ICollection<Role> roles = new List<Role>();
+            ICollection<Invoice> invoiceList = new List<Invoice>();
+
             foreach (RoleDTO item in role)
             {
                 roles.Add(MapDTO.Map<Role, RoleDTO>(item));
             }
-            User user = new User(id, name, firstName, email, address, roles);
+
+            foreach (InvoiceDTO item in invoices)
+            {
+                invoiceList.Add(MapDTO.Map<Invoice, InvoiceDTO>(item));
+            }
+
+            User user = new User(id, name, firstName, email, address, roles, invoiceList);
             return MapDTO.Map<UserDTO, User>(repo.CreateUser(user));
         }
 
