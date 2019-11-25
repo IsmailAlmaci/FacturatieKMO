@@ -12,14 +12,15 @@ namespace FacturatieKMO.DAL.Model
         public string RoleName { get; set; }
         public User User { get; set; }
 
-        public Role(int roleId, string roleName)
+        public Role()
+        {
+        }
+
+        public Role(int roleId, string roleName, User user)
         {
             RoleId = roleId;
             RoleName = roleName;
-        }
-
-        public Role()
-        {
+            User = user;
         }
     }
 }

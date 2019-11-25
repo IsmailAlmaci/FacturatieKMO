@@ -10,10 +10,10 @@ namespace FacturatieKMO.DAL.EF
         protected override void Seed(InvoiceDbContext context)
         {
             List<Role> roles = new List<Role>();
-            roles.Add(new Role(1, "Admin"));
-            roles.Add(new Role(2, "User"));
+            roles.Add(new Role(1, "Admin", null));
+            roles.Add(new Role(2, "User", null));
 
-            context.Users.Add(new User(1, "Almaci", "Ismail", "s104428@ap.be", "Sint-Gillis-Waas", roles));
+            context.Users.Add(new User(1, "Almaci", "Ismail", "s104428@ap.be", "Sint-Gillis-Waas", roles, null));
             context.SaveChanges();
         }
     }

@@ -15,13 +15,15 @@ namespace FacturatieKMO.DAL.Model
         {
 
         }
-        public Customer(int userId, string name, string firstName, string email, string address)
+
+        public Customer(int customerId, string name, string firstName, string email, string address, ICollection<Invoice> invoices)
         {
-            CustomerId = userId;
+            CustomerId = customerId;
             Name = name;
             FirstName = firstName;
             Email = email;
             Address = address;
+            Invoices = invoices;
         }
     }
 }

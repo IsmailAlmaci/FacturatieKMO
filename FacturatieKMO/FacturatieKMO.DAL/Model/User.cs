@@ -17,7 +17,7 @@ namespace FacturatieKMO.DAL.Model
 
         }
 
-        public User(int userId, string name, string firstName, string email, string address, ICollection<Role> role)
+        public User(int userId, string name, string firstName, string email, string address, ICollection<Role> role, ICollection<Invoice> invoices)
         {
             UserId = userId;
             Name = name;
@@ -25,6 +25,7 @@ namespace FacturatieKMO.DAL.Model
             Email = email;
             Address = address;
             Role = role;
+            Invoices = invoices;
         }
     }
 }

@@ -18,14 +18,17 @@ namespace FacturatieKMO.DAL.Model
         {
 
         }
-        public Invoice(int invoiceNr, string companyInfo, string customerInfo, DateTime invoiceDate, ICollection<InvoiceDetail> responses, Status invoiceStatus)
+
+        public Invoice(int invoiceNr, string companyInfo, string customerInfo, DateTime invoiceDate, ICollection<InvoiceDetail> details, Status invoiceStatus, Customer customer, User user)
         {
             InvoiceNr = invoiceNr;
             CompanyInfo = companyInfo;
             CustomerInfo = customerInfo;
             InvoiceDate = invoiceDate;
-            Details = responses;
+            Details = details;
             InvoiceStatus = invoiceStatus;
+            Customer = customer;
+            User = user;
         }
     }
 }

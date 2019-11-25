@@ -11,19 +11,24 @@ namespace FacturatieKMO.BL.Domain
         public DateTime InvoiceDate { get; set; }
         public ICollection<InvoiceDetailDTO> Details { get; set; }
         public StatusDTO InvoiceStatus { get; set; }
+        public CustomerDTO Customer { get; set; }
+        public UserDTO User { get; set; }
 
         public InvoiceDTO()
         {
 
         }
-        public InvoiceDTO(int invoiceNr, string companyInfo, string customerInfo, DateTime invoiceDate, ICollection<InvoiceDetailDTO> responses, StatusDTO invoiceStatus)
+
+        public InvoiceDTO(int invoiceNr, string companyInfo, string customerInfo, DateTime invoiceDate, ICollection<InvoiceDetailDTO> details, StatusDTO invoiceStatus, CustomerDTO customer, UserDTO user)
         {
             InvoiceNr = invoiceNr;
             CompanyInfo = companyInfo;
             CustomerInfo = customerInfo;
             InvoiceDate = invoiceDate;
-            Details = responses;
+            Details = details;
             InvoiceStatus = invoiceStatus;
+            Customer = customer;
+            User = user;
         }
     }
 }
