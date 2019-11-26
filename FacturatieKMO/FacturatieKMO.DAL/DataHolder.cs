@@ -24,19 +24,19 @@ namespace FacturatieKMO.DAL
         internal static List<Invoice> GetInvoices()
         {
             List<Invoice> invoices = new List<Invoice>();
-            invoices.Add(new Invoice(1, "Wood company", "Wood customer", DateTime.Now, null,
-                Status.InProgress, null, null));
+            invoices.Add(new Invoice(1, "Wood company", "Wood customer", DateTime.Now, GetInvoiceDetails(),
+                Status.InProgress, GetCustomers().ElementAt(0), GetUsers().ElementAt(0)));
 
-            invoices.Add(new Invoice(2, "Iron company", "Iron customer", DateTime.Now, null,
+            invoices.Add(new Invoice(2, "Iron company", "Iron customer", DateTime.Now, GetInvoiceDetails(),
                 Status.Completed, GetCustomers().ElementAt(1), GetUsers().ElementAt(1)));
 
-            invoices.Add(new Invoice(3, "Electronics company", "Electronics customer", DateTime.Now, null,
+            invoices.Add(new Invoice(3, "Electronics company", "Electronics customer", DateTime.Now, GetInvoiceDetails(),
                 Status.Completed, GetCustomers().ElementAt(2), GetUsers().ElementAt(2)));
 
-            invoices.Add(new Invoice(4, "Food company", "Food customer", DateTime.Now, null,
+            invoices.Add(new Invoice(4, "Food company", "Food customer", DateTime.Now, GetInvoiceDetails(),
                 Status.InProgress, GetCustomers().ElementAt(3), GetUsers().ElementAt(3)));
 
-            invoices.Add(new Invoice(5, "Software company", "Software Customer", DateTime.Now, null,
+            invoices.Add(new Invoice(5, "Software company", "Software Customer", DateTime.Now, GetInvoiceDetails(),
                 Status.InProgress, GetCustomers().ElementAt(4), GetUsers().ElementAt(4)));
 
             return invoices;

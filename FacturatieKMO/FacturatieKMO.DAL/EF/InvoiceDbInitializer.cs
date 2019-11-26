@@ -10,8 +10,8 @@ namespace FacturatieKMO.DAL.EF
         protected override void Seed(InvoiceDbContext context)
         {
             SeedList(DataHolder.GetCustomers(), context.Customers);
-            SeedList(DataHolder.GetInvoices(), context.Invoices);
             SeedList(DataHolder.GetInvoiceDetails(), context.InvoiceDetails);
+            SeedList(DataHolder.GetInvoices(), context.Invoices);
             SeedList(DataHolder.GetUsers(), context.Users);
             SeedList(DataHolder.GetRoles(), context.Roles);
 
