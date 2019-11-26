@@ -24,19 +24,19 @@ namespace FacturatieKMO.DAL
         internal static List<Invoice> GetInvoices()
         {
             List<Invoice> invoices = new List<Invoice>();
-            invoices.Add(new Invoice(1, "Wood company", "Wood customer", DateTime.Now, GetInvoiceDetails(),
-                Status.InProgress, GetCustomers().ElementAt(0), GetUsers().ElementAt(0)));
+            invoices.Add(new Invoice(1, "Wood company", "Wood customer", DateTime.Now, null,
+                Status.InProgress, null, null));
 
-            invoices.Add(new Invoice(2, "Iron company", "Iron customer", DateTime.Now, GetInvoiceDetails(),
+            invoices.Add(new Invoice(2, "Iron company", "Iron customer", DateTime.Now, null,
                 Status.Completed, GetCustomers().ElementAt(1), GetUsers().ElementAt(1)));
 
-            invoices.Add(new Invoice(3, "Electronics company", "Electronics customer", DateTime.Now, GetInvoiceDetails(),
+            invoices.Add(new Invoice(3, "Electronics company", "Electronics customer", DateTime.Now, null,
                 Status.Completed, GetCustomers().ElementAt(2), GetUsers().ElementAt(2)));
 
-            invoices.Add(new Invoice(4, "Food company", "Food customer", DateTime.Now, GetInvoiceDetails(),
+            invoices.Add(new Invoice(4, "Food company", "Food customer", DateTime.Now, null,
                 Status.InProgress, GetCustomers().ElementAt(3), GetUsers().ElementAt(3)));
 
-            invoices.Add(new Invoice(5, "Software company", "Software Customer", DateTime.Now, GetInvoiceDetails(),
+            invoices.Add(new Invoice(5, "Software company", "Software Customer", DateTime.Now, null,
                 Status.InProgress, GetCustomers().ElementAt(4), GetUsers().ElementAt(4)));
 
             return invoices;
@@ -66,11 +66,11 @@ namespace FacturatieKMO.DAL
         internal static List<User> GetUsers()
         {
             List<User> users = new List<User>();
-            users.Add(new User(1, "Almaci", "Ismail", "ismail.almaci@student.ap.be", "SGW", GetRoles(), null));
-            users.Add(new User(2, "Newell", "Gabe", "gabe.newell@student.ap.be", "LA", GetRoles(), null));
-            users.Add(new User(3, "Wilder", "Deontay", "deontay.wilder@student.ap.be", "AL", GetRoles(), null));
-            users.Add(new User(4, "Sapp", "Bob", "bob.sapp@student.ap.be", "JP", GetRoles(), null));
-            users.Add(new User(5, "Hoost", "Ernesto", "ernesto.hoost@student.ap.be", "NL", GetRoles(), null));
+            users.Add(new User(1, "Almaci", "Ismail", "ismail.almaci@student.ap.be", "SGW", null, null));
+            users.Add(new User(2, "Newell", "Gabe", "gabe.newell@student.ap.be", "LA", null, null));
+            users.Add(new User(3, "Wilder", "Deontay", "deontay.wilder@student.ap.be", "AL", null, null));
+            users.Add(new User(4, "Sapp", "Bob", "bob.sapp@student.ap.be", "JP", null, null));
+            users.Add(new User(5, "Hoost", "Ernesto", "ernesto.hoost@student.ap.be", "NL", null, null));
 
             return users;
         }
