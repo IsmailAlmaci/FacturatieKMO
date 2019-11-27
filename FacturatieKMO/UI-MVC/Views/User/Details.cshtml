@@ -1,4 +1,4 @@
-﻿@model FacturatieKMO.BL.Domain.User
+﻿@model FacturatieKMO.BL.Domain.UserDTO
 
 @{
     ViewBag.Title = "Details";
@@ -7,9 +7,17 @@
 <h2>Details</h2>
 
 <div>
-    <h4>User</h4>
+    <h4>UserDTO</h4>
     <hr />
     <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.UserId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserId)
+        </dd>
+
         <dt>
             @Html.DisplayNameFor(model => model.Name)
         </dt>

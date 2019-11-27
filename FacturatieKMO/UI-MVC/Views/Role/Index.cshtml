@@ -1,4 +1,4 @@
-﻿@model IEnumerable<FacturatieKMO.BL.Domain.Role>
+﻿@model IEnumerable<FacturatieKMO.BL.Domain.RoleDTO>
 
 @{
     ViewBag.Title = "Index";
@@ -12,6 +12,9 @@
 <table class="table">
     <tr>
         <th>
+            @Html.DisplayNameFor(model => model.RoleId)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.RoleName)
         </th>
         <th></th>
@@ -19,6 +22,9 @@
 
 @foreach (var item in Model) {
     <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.RoleId)
+        </td>
         <td>
             @Html.DisplayFor(modelItem => item.RoleName)
         </td>

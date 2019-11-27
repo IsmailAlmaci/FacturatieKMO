@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<FacturatieKMO.BL.Domain.InvoiceDTO>
 
 @{
-    ViewBag.Title = "View";
+    ViewBag.Title = "Index";
 }
 
-<h2>View</h2>
+<h2>Index</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -41,9 +41,9 @@
             @Html.DisplayFor(modelItem => item.InvoiceDate)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.InvoiceNr }) |
-            @Html.ActionLink("Details", "Details", new { id = item.InvoiceNr }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.InvoiceNr })
+            @Html.ActionLink("Edit", "Edit", new { id=item.InvoiceNr }) |
+            @Html.ActionLink("Details", "Details", new { id=item.InvoiceNr }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.InvoiceNr })
         </td>
     </tr>
 }
