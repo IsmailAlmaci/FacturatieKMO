@@ -16,6 +16,8 @@ namespace FacturatieKMO.DAL.Configuration
 
             Property(r => r.RoleId).HasColumnType("int");
             Property(r => r.RoleName).HasColumnType("varchar").HasMaxLength(100);
+
+            HasKey<int>(i => i.RoleId);
         }
     }
 }

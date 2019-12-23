@@ -20,6 +20,8 @@ namespace FacturatieKMO.DAL.Configuration
             Property(i => i.Discount).HasColumnType("float");
             Property(i => i.PricePerUnit).HasColumnType("float");
             Property(i => i.VAT).HasColumnType("float");
+
+            HasKey<int>(i => i.ItemId);
         }
     }
 }

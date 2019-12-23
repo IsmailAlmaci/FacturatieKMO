@@ -37,12 +37,6 @@ namespace FacturatieKMO.DAL.EF
             modelBuilder.Configurations.Add(new InvoiceDetailConfiguration());
             modelBuilder.Configurations.Add(new RoleConfiguration());
             modelBuilder.Configurations.Add(new UserConfiguration());
-
-            //modelBuilder.Entity<User>().HasKey<int>(u => u.UserId);
-            //modelBuilder.Entity<Customer>().HasKey<int>(c => c.CustomerId);
-            //modelBuilder.Entity<Invoice>().HasKey<int>(i => i.InvoiceNr);
-            //modelBuilder.Entity<InvoiceDetail>().HasKey<int>(i => i.ItemId);
-            //modelBuilder.Entity<Role>().HasKey<int>(i => i.RoleId);
         }
     }
 }

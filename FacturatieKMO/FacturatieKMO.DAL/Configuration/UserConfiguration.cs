@@ -20,6 +20,8 @@ namespace FacturatieKMO.DAL.Configuration
             Property(c => c.Email).HasColumnType("varchar").HasMaxLength(100);
             Property(c => c.Address).HasColumnType("varchar").HasMaxLength(200);
 
+            HasKey<int>(u => u.UserId);
+
             HasMany(u => u.Invoices)
                 .WithRequired(i => i.User);
         }
