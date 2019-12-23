@@ -51,15 +51,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Configuration\CustomerConfiguration.cs" />
+    <Compile Include="Configuration\InvoiceConfiguration.cs" />
+    <Compile Include="Configuration\InvoiceDetailConfiguration.cs" />
+    <Compile Include="Configuration\RoleConfiguration.cs" />
+    <Compile Include="Configuration\UserConfiguration.cs" />
     <Compile Include="DataHolder.cs" />
-    <Compile Include="EF\CustomerRepository.cs" />
-    <Compile Include="EF\InvoiceDbConfiguration.cs" />
-    <Compile Include="EF\InvoiceDbContext.cs" />
-    <Compile Include="EF\InvoiceDbInitializer.cs" />
-    <Compile Include="EF\InvoiceDetailRepository.cs" />
-    <Compile Include="EF\InvoiceRepository.cs" />
-    <Compile Include="EF\RoleRepository.cs" />
-    <Compile Include="EF\UserRepository.cs" />
+    <Compile Include="IInvoiceDataSource.cs" />
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Repositories\CustomerRepository.cs" />
+    <Compile Include="InvoiceDbContext.cs" />
+    <Compile Include="Repositories\InvoiceDetailRepository.cs" />
+    <Compile Include="Repositories\InvoiceRepository.cs" />
+    <Compile Include="Repositories\RoleRepository.cs" />
+    <Compile Include="Repositories\UserRepository.cs" />
     <Compile Include="ICustomerRepository.cs" />
     <Compile Include="IInvoiceDetailRepository.cs" />
     <Compile Include="IInvoiceRepository.cs" />
@@ -83,6 +88,7 @@
       <Name>FacturatieKMO.BL.Domain</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
