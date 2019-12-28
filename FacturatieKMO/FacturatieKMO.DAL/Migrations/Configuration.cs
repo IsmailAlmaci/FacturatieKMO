@@ -23,11 +23,8 @@ namespace FacturatieKMO.DAL.Migrations
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method
             //  to avoid creating duplicate seed data.
 
-            SeedList(DataHolder.GetInvoiceDetails(), context.InvoiceDetails);
             SeedList(DataHolder.GetInvoices(), context.Invoices);
             SeedList(DataHolder.GetRoles(), context.Roles);
-
-            context.SaveChanges();
         }
 
         private void SeedList<TEntity>(List<TEntity> items, DbSet<TEntity> dbSet) where TEntity : class
