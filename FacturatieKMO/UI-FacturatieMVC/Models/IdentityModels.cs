@@ -21,7 +21,7 @@ namespace UI_FacturatieMVC.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+            : base("InvoiceDB_EFCodeFirst", throwIfV1Schema: false)
         {
         }
 
