@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace AP.UI.Web.MVC.Controllers
 {
-    [Authorize]
+    [Authorize(Roles ="Admin")]
     public class InvoiceController : Controller
     {
         private IInvoiceManager mgr = new InvoiceManager();

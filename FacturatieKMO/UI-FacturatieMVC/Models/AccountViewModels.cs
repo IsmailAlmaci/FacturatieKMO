@@ -65,9 +65,25 @@ namespace UI_FacturatieMVC.Models
     public class RegisterViewModel
     {
         [Required]
+        [Display(Name = "UserRoles")]
+        public string UserRoles { get; set; }
+
+        [Required]
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
+
+        [Required]
+        [Display(Name = "Name")]
+        public string Name { get; set; }
+
+        [Required]
+        [Display(Name = "FirstName")]
+        public string Firstname { get; set; }
+
+        [Required]
+        [Display(Name = "Address")]
+        public string Address { get; set; }
 
         [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
