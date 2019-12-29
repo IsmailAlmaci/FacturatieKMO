@@ -62,6 +62,10 @@
     <Compile Include="Migrations\201912232151589_CreateDB.designer.cs">
       <DependentUpon>201912232151589_CreateDB.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201912290107253_CreateAspIdentity.cs" />
+    <Compile Include="Migrations\201912290107253_CreateAspIdentity.designer.cs">
+      <DependentUpon>201912290107253_CreateAspIdentity.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Repositories\CustomerRepository.cs" />
     <Compile Include="InvoiceDbContext.cs" />
@@ -95,6 +99,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201912232151589_CreateDB.resx">
       <DependentUpon>201912232151589_CreateDB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912290107253_CreateAspIdentity.resx">
+      <DependentUpon>201912290107253_CreateAspIdentity.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
