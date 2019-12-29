@@ -6,11 +6,13 @@ using System.Web.Mvc;
 
 namespace AP.UI.Web.MVC.Controllers
 {
+    [Authorize]
     public class InvoiceController : Controller
     {
         private IInvoiceManager mgr = new InvoiceManager();
 
         // GET: Invoice
+        [AllowAnonymous]
         public ActionResult Index()
         {
             IEnumerable<InvoiceDTO> invoices = mgr.GetInvoices();
@@ -18,6 +20,7 @@ namespace AP.UI.Web.MVC.Controllers
         }
 
         // GET: Invoice/Details/5
+        [AllowAnonymous]
         public ActionResult Details(int id)
         {
             return View(mgr.GetInvoice(id));
