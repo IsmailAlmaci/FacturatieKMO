@@ -3,34 +3,39 @@ using FacturatieKMO.BL.Domain;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
+using UI_FacturatieMVC.Models;
 
 namespace AP.UI.Web.MVC.Controllers
 {
+    [Authorize]
     public class UserController : Controller
     {
-        private IUserManager mgr = new UserManager();
+        private ApplicationDbContext ctx = new ApplicationDbContext();
 
         // GET: Gebruiker
+        [Authorize(Roles = "Admin")]
         public ActionResult Index()
         {
-            IEnumerable<UserDTO> users = mgr.GetUsers();
+            IEnumerable<ApplicationUser> users = ctx.Users.AsEnumerable();
             return View(users);
         }
 
         // GET: Gebruiker/Details/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Details(int id)
         {
-            UserDTO user = mgr.GetUser(id);
-            return View(user);
+            return View();
         }
 
         // GET: Gebruiker/Create
+        [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
             return View();
         }
 
         // POST: Gebruiker/Create
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public ActionResult Create(FormCollection collection)
         {
@@ -42,7 +47,6 @@ namespace AP.UI.Web.MVC.Controllers
                 string email = Request.Form["Email"];
                 string address = Request.Form["Address"];
 
-                mgr.AddUsers(3, name, firstName, email, address, null, null);
                 return RedirectToAction("Index");
             }
             catch
@@ -54,7 +58,7 @@ namespace AP.UI.Web.MVC.Controllers
         // GET: Gebruiker/Edit/5
         public ActionResult Edit(int id)
         {
-            return View(mgr.GetUser(id));
+            return View(ctx.Users.ElementAt(id));
         }
 
         // POST: Gebruiker/Edit/5
@@ -69,7 +73,6 @@ namespace AP.UI.Web.MVC.Controllers
                 string address = Request.Form["Address"];
 
                 UserDTO user = new UserDTO(id, name, firstName, email, address, null, null);
-                mgr.ChangeUser(user);
 
                 return RedirectToAction("Index");
             }
@@ -80,19 +83,20 @@ namespace AP.UI.Web.MVC.Controllers
         }
 
         // GET: Gebruiker/Delete/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int id)
         {
-            return View(mgr.GetUser(id));
+            return View();
         }
 
         // POST: Gebruiker/Delete/5
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
         {
             try
             {
                 // TODO: Add delete logic here
-                mgr.RemoveUser(id);
                 return RedirectToAction("Index");
             }
             catch

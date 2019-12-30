@@ -4,18 +4,22 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using Microsoft.AspNet.Identity;
 using System.Web.Mvc;
+using UI_FacturatieMVC.Models;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace AP.UI.Web.MVC.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class RoleController : Controller
     {
-        private IRoleManager mgr = new RoleManager();
+        private ApplicationDbContext ctx = new ApplicationDbContext();
 
         // GET: Role
         public ActionResult Index()
         {
-            IEnumerable<RoleDTO> roles = mgr.GetRoles();
+            IEnumerable<IdentityRole> roles = ctx.Roles.AsEnumerable();
             return View(roles);
         }
 
