@@ -5,6 +5,7 @@ using System.Web.Mvc;
 
 namespace AP.UI.Web.MVC.Controllers
 {
+    [Authorize]
     public class InvoiceDetailController : Controller
     {
         private IInvoiceDetailManager mgr = new InvoiceDetailManager();
