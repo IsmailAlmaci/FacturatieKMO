@@ -45,7 +45,7 @@ namespace AP.UI.Web.MVC.Controllers
                 ICollection<InvoiceDetailDTO> details = null;
                 StatusDTO status = StatusDTO.InProgress;
 
-                mgr.AddInvoice(companyInfo, customerInfo, date, details, status, null, null);
+                mgr.AddInvoice(companyInfo, customerInfo, date, details, status, null);
                 return RedirectToAction("Index");
             }
             catch
@@ -71,8 +71,8 @@ namespace AP.UI.Web.MVC.Controllers
                 string companyInfo = Request.Form["CompanyInfo"];
                 string customerInfo = Request.Form["CustomerInfo"];
 
-                InvoiceDTO invoice = new InvoiceDTO(id, companyInfo, customerInfo, 
-                    currentInvoice.InvoiceDate, currentInvoice.Details, currentInvoice.InvoiceStatus, null, null);
+                InvoiceDTO invoice = new InvoiceDTO(companyInfo, customerInfo, 
+                    currentInvoice.InvoiceDate, currentInvoice.Details, currentInvoice.InvoiceStatus, null);
                 mgr.ChangeInvoice(invoice);
 
                 return RedirectToAction("Index");

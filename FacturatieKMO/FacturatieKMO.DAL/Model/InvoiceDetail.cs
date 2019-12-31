@@ -2,6 +2,7 @@
 {
     public class InvoiceDetail
     {
+        public int Id { get; set; }
         public string Item { get; set; }
         public double PricePerUnit { get; set; }
         public double Discount { get; set; }

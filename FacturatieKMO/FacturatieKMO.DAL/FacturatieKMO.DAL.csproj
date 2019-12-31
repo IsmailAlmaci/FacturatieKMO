@@ -56,6 +56,10 @@
     <Compile Include="Configuration\InvoiceDetailConfiguration.cs" />
     <Compile Include="DataHolder.cs" />
     <Compile Include="IInvoiceDataSource.cs" />
+    <Compile Include="Migrations\201912310121123_Create.cs" />
+    <Compile Include="Migrations\201912310121123_Create.designer.cs">
+      <DependentUpon>201912310121123_Create.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Repositories\CustomerRepository.cs" />
     <Compile Include="InvoiceDbContext.cs" />
@@ -79,6 +83,11 @@
       <Project>{019ef083-b267-4f1f-ad78-34cad7e2e89e}</Project>
       <Name>FacturatieKMO.BL.Domain</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201912310121123_Create.resx">
+      <DependentUpon>201912310121123_Create.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

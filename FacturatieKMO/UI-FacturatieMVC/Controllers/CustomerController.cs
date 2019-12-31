@@ -69,7 +69,7 @@ namespace AP.UI.Web.MVC.Controllers
                 string email = Request.Form["Email"];
                 string address = Request.Form["Address"];
 
-                CustomerDTO customer = new CustomerDTO(id, name, firstName, email, address, null);
+                CustomerDTO customer = new CustomerDTO(name, firstName, email, address, null);
 
                 mgr.ChangeCustomer(customer);
                 return RedirectToAction("Index");

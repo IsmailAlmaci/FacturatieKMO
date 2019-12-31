@@ -5,6 +5,7 @@ namespace FacturatieKMO.DAL.Model
 {
     public class Invoice
     {
+        public int Id { get; set; }
         public string CompanyInfo { get; set; }
         public string CustomerInfo { get; set; }
         public DateTime InvoiceDate { get; set; }

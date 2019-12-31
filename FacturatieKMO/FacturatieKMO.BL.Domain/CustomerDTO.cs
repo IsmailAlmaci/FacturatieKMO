@@ -4,7 +4,7 @@ namespace FacturatieKMO.BL.Domain
 {
     public class CustomerDTO
     {
-        public int CustomerId { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
         public string FirstName { get; set; }
         public string Email { get; set; }
@@ -15,9 +15,8 @@ namespace FacturatieKMO.BL.Domain
         {
         }
 
-        public CustomerDTO(int customerId, string name, string firstName, string email, string address, ICollection<InvoiceDTO> invoices)
+        public CustomerDTO(string name, string firstName, string email, string address, ICollection<InvoiceDTO> invoices)
         {
-            CustomerId = customerId;
             Name = name;
             FirstName = firstName;
             Email = email;

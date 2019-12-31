@@ -24,7 +24,6 @@ namespace FacturatieKMO.DAL.Migrations
             //  to avoid creating duplicate seed data.
 
             SeedList(DataHolder.GetInvoices(), context.Invoices);
-            SeedList(DataHolder.GetRoles(), context.Roles);
         }
 
         private void SeedList<TEntity>(List<TEntity> items, DbSet<TEntity> dbSet) where TEntity : class
