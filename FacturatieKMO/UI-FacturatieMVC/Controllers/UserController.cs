@@ -1,26 +1,29 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Data.Entity;
-using System.Web;
-using System.Web.Mvc;
-using Microsoft.AspNet.Identity;
+﻿using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
+using System.Collections.Generic;
+using System.Data.Entity;
+using System.Linq;
+using System.Net;
+using System.Threading.Tasks;
+using System.Web;
+using System.Web.Mvc;
 using UI_FacturatieMVC.Models;
 
 namespace UI_FacturatieMVC.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    [Authorize]
     public class UserController : Controller
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
         private ApplicationDbContext context;
+        private List<ApplicationUser> allUsers;
 
         public UserController()
         {
             context = new ApplicationDbContext();
+            allUsers = context.Users.ToList();
         }
 
         public UserController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
@@ -54,81 +57,141 @@ namespace UI_FacturatieMVC.Controllers
         }
 
         // GET: User
+        [Authorize(Roles = "Admin")]
         public ActionResult Index()
         {
-            var allUsers = context.Users.ToList();
             return View(allUsers);
         }
 
         // GET: User/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details()
+        {
+            if (User.Identity.IsAuthenticated)
+            {
+                var userid = User.Identity.GetUserId();
+                var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
+
+                ApplicationUser user = userManager.FindByIdAsync(userid).Result;
+
+                return View(user);
+            }
+            else return RedirectToAction("Login", "Account");
+        }
+
+        // GET: User/Register
+        [Authorize(Roles = "Admin")]
+        public ActionResult Register()
         {
             return View();
         }
 
-        // GET: User/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: User/Create
+        // POST: User/Register
+        [Authorize(Roles = "Admin")]
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Register(RegisterViewModel model)
         {
-            try
-            {
-                // TODO: Add insert logic here
+            // TODO: Add insert logic here
 
-                return RedirectToAction("Index");
-            }
-            catch
+            var user = new ApplicationUser
             {
-                return View();
+                UserName = model.Email,
+                Email = model.Email,
+                FirstName = model.Firstname,
+                Name = model.Name,
+                Address = model.Address,
+                EmailConfirmed = true
+            };
+
+            var result = await UserManager.CreateAsync(user, model.Password);
+
+            if (result.Succeeded)
+            {
+                await UserManager.AddToRoleAsync(user.Id, "User");
+
+                await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+
+                // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
+                // Send an email with this link
+                // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+                // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
             }
+                return View();
+            
         }
 
         // GET: User/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Edit(string id)
         {
-            return View();
+            ApplicationUser appUser = new ApplicationUser();
+            appUser = UserManager.FindById(id);
+
+            return View(appUser);
         }
 
         // POST: User/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public async Task<ActionResult> Edit(int id, ApplicationUser model)
         {
-            try
+            if (!ModelState.IsValid)
             {
-                // TODO: Add update logic here
+                return View(model);
+            }
 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            var store = new UserStore<ApplicationUser>(new ApplicationDbContext());
+            var manager = new UserManager<ApplicationUser>(store);
+            var currentUser = manager.FindByEmail(model.Email);
+
+            currentUser.Email = model.Email;
+            currentUser.Name = model.Name;
+            currentUser.FirstName = model.FirstName;
+            currentUser.Address = model.Address;
+            currentUser.PhoneNumber = model.PhoneNumber;
+
+            await manager.UpdateAsync(currentUser);
+            TempData["msg"] = "Profile Updated";
+            return RedirectToAction("Index");
         }
 
         // GET: User/Delete/5
-        public ActionResult Delete(int id)
+        [Authorize(Roles = "Admin")]
+        public ActionResult Delete(string id)
         {
-            return View();
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            var user = context.Users.Find(id);
+
+            if (user == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(user);
         }
 
         // POST: User/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        [Authorize(Roles = "Admin")]
+        public async Task<ActionResult> Delete(ApplicationUser user)
         {
-            try
-            {
-                // TODO: Add delete logic here
+            var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
+            context.Users.Attach(user);
 
+            var result = await userManager.DeleteAsync(user);
+
+            if (result.Succeeded)
+            {
+                TempData["UserDeleted"] = "User Successfully Deleted";
                 return RedirectToAction("Index");
             }
-            catch
+            else
             {
-                return View();
+                TempData["UserDeleted"] = "Error Deleting User";
+                return RedirectToAction("Index");
             }
         }
     }
