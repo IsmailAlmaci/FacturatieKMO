@@ -4,7 +4,6 @@ namespace FacturatieKMO.DAL.Model
 { 
     public class Customer
     {
-        public int CustomerId { get; set; }
         public string Name { get; set; }
         public string FirstName { get; set; }
         public string Email { get; set; }
@@ -16,9 +15,8 @@ namespace FacturatieKMO.DAL.Model
 
         }
 
-        public Customer(int customerId, string name, string firstName, string email, string address, ICollection<Invoice> invoices)
+        public Customer(string name, string firstName, string email, string address, ICollection<Invoice> invoices)
         {
-            CustomerId = customerId;
             Name = name;
             FirstName = firstName;
             Email = email;

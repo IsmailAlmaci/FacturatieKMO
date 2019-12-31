@@ -14,13 +14,10 @@ namespace FacturatieKMO.DAL.Configuration
         {
             ToTable("Customer");
 
-            Property(c => c.CustomerId).HasColumnType("int");
             Property(c => c.Name).HasColumnType("varchar").HasMaxLength(100);
             Property(c => c.FirstName).HasColumnType("varchar").HasMaxLength(100);
             Property(c => c.Email).HasColumnType("varchar").HasMaxLength(100);
             Property(c => c.Address).HasColumnType("varchar").HasMaxLength(200);
-
-            HasKey<int>(c => c.CustomerId);
 
             HasMany(c => c.Invoices)
                 .WithRequired(i => i.Customer);

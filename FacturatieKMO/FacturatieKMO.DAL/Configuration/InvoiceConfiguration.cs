@@ -14,12 +14,9 @@ namespace FacturatieKMO.DAL.Configuration
         {
             ToTable("Invoice");
 
-            Property(i => i.InvoiceNr).HasColumnType("int");
             Property(i => i.CompanyInfo).HasColumnType("varchar").HasMaxLength(100);
             Property(i => i.CustomerInfo).HasColumnType("varchar").HasMaxLength(100);
             Property(i => i.InvoiceDate).HasColumnType("Date");
-
-            HasKey<int>(i => i.InvoiceNr);
         }
     }
 }

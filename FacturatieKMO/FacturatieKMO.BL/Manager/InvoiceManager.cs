@@ -17,7 +17,7 @@ namespace FacturatieKMO.BL
             repo = new InvoiceRepository();
         }
 
-        public InvoiceDTO AddInvoice(int nr, string companyInfo, string customerInfo, DateTime date, ICollection<InvoiceDetailDTO> details, StatusDTO status, CustomerDTO customer, UserDTO user)
+        public InvoiceDTO AddInvoice(string companyInfo, string customerInfo, DateTime date, ICollection<InvoiceDetailDTO> details, StatusDTO status, CustomerDTO customer)
         {
             ICollection<InvoiceDetail> invoiceDetails = new List<InvoiceDetail>();
             foreach (InvoiceDetailDTO item in details)
@@ -25,9 +25,8 @@ namespace FacturatieKMO.BL
                 invoiceDetails.Add(MapDTO.Map<InvoiceDetail, InvoiceDetailDTO>(item));
             }
 
-            Invoice invoice = new Invoice(nr, companyInfo, customerInfo, date, invoiceDetails,
-                MapDTO.Map<Status, StatusDTO>(status), MapDTO.Map<Customer, CustomerDTO>(customer),
-                MapDTO.Map<User, UserDTO>(user));
+            Invoice invoice = new Invoice(companyInfo, customerInfo, date, invoiceDetails,
+                MapDTO.Map<Status, StatusDTO>(status), MapDTO.Map<Customer, CustomerDTO>(customer));
 
             return MapDTO.Map<InvoiceDTO, Invoice>(repo.CreateInvoice(invoice));
         }

@@ -42,7 +42,7 @@ namespace AP.UI.Web.MVC.Controllers
                 string email = Request.Form["Email"];
                 string address = Request.Form["Address"];
 
-                mgr.AddCustomers(1, name, firstName, email, address, null);
+                mgr.AddCustomers(name, firstName, email, address, null);
                 return RedirectToAction("Index");
             }
             catch

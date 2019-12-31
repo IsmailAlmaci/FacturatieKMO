@@ -2,7 +2,6 @@
 {
     public class InvoiceDetail
     {
-        public int ItemId { get; set; }
         public string Item { get; set; }
         public double PricePerUnit { get; set; }
         public double Discount { get; set; }
@@ -13,9 +12,8 @@
         {
 
         }
-        public InvoiceDetail(int itemId, string item, double pricePerUnit, double discount, int amount, double vAT)
+        public InvoiceDetail(string item, double pricePerUnit, double discount, int amount, double vAT)
         {
-            ItemId = itemId;
             Item = item;
             PricePerUnit = pricePerUnit;
             Discount = discount;

@@ -12,7 +12,5 @@ namespace FacturatieKMO.DAL
         IQueryable<Customer> Customers { get; }
         IQueryable<InvoiceDetail> InvoiceDetails { get; }
         IQueryable<Invoice> Invoices { get; }
-        IQueryable<Role> Roles { get; }
-        IQueryable<User> Users { get; }
     }
 }

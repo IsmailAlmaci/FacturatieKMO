@@ -14,14 +14,11 @@ namespace FacturatieKMO.DAL.Configuration
         {
             ToTable("InvoiceDetail");
 
-            Property(i => i.ItemId).HasColumnType("int");
             Property(i => i.Item).HasColumnType("varchar").HasMaxLength(100);
             Property(i => i.Amount).HasColumnType("int");
             Property(i => i.Discount).HasColumnType("float");
             Property(i => i.PricePerUnit).HasColumnType("float");
             Property(i => i.VAT).HasColumnType("float");
-
-            HasKey<int>(i => i.ItemId);
         }
     }
 }

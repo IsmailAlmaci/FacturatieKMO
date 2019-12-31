@@ -6,7 +6,7 @@ namespace FacturatieKMO.BL
     public interface IInvoiceDetailManager
     {
         IEnumerable<InvoiceDetailDTO> GetInvoiceDetails();
-        InvoiceDetailDTO AddInvoiceDetails(int id, string item, double price, double discount, int amount, double vat);
+        InvoiceDetailDTO AddInvoiceDetails(string item, double price, double discount, int amount, double vat);
         InvoiceDetailDTO GetInvoiceDetail(int invoiceDetailId);
         void RemoveInvoiceDetail(int invoiceDetailId);
         void ChangeInvoiceDetail(InvoiceDetailDTO invoiceDetail);

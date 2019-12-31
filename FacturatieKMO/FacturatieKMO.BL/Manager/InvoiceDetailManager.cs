@@ -16,9 +16,9 @@ namespace FacturatieKMO.BL
             repo = new InvoiceDetailRepository();
         }
 
-        public InvoiceDetailDTO AddInvoiceDetails(int id, string item, double price, double discount, int amount, double vat)
+        public InvoiceDetailDTO AddInvoiceDetails(string item, double price, double discount, int amount, double vat)
         {
-            InvoiceDetail invoiceDetail = new InvoiceDetail(id, item, price, discount, amount, vat);
+            InvoiceDetail invoiceDetail = new InvoiceDetail(item, price, discount, amount, vat);
             return MapDTO.Map<InvoiceDetailDTO, InvoiceDetail>(repo.CreateInvoiceDetail(invoiceDetail));
         }
 

@@ -39,14 +39,13 @@ namespace AP.UI.Web.MVC.Controllers
             try
             {
                 // TODO: Add insert logic here
-                int nr = Convert.ToInt32(Request.Form["InvoiceNr"]);
                 string companyInfo = Request.Form["CompanyInfo"];
                 string customerInfo = Request.Form["CustomerInfo"];
                 DateTime date = DateTime.Now;
                 ICollection<InvoiceDetailDTO> details = null;
                 StatusDTO status = StatusDTO.InProgress;
 
-                mgr.AddInvoice(nr, companyInfo, customerInfo, date, details, status, null, null);
+                mgr.AddInvoice(companyInfo, customerInfo, date, details, status, null, null);
                 return RedirectToAction("Index");
             }
             catch

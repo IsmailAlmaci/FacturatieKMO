@@ -12,19 +12,13 @@ namespace FacturatieKMO.DAL.EF
         {
         }
 
-        public DbSet<User> Users { get; set; }
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Invoice> Invoices { get; set; }
         public DbSet<InvoiceDetail> InvoiceDetails { get; set; }
-        public DbSet<Role> Roles { get; set; }
 
         IQueryable<Customer> IInvoiceDataSource.Customers => Customers;
 
         IQueryable<Invoice> IInvoiceDataSource.Invoices => Invoices;
-
-        IQueryable<Role> IInvoiceDataSource.Roles => Roles;
-
-        IQueryable<User> IInvoiceDataSource.Users => Users;
 
         IQueryable<InvoiceDetail> IInvoiceDataSource.InvoiceDetails => InvoiceDetails;
 
@@ -35,8 +29,6 @@ namespace FacturatieKMO.DAL.EF
             modelBuilder.Configurations.Add(new CustomerConfiguration());
             modelBuilder.Configurations.Add(new InvoiceConfiguration());
             modelBuilder.Configurations.Add(new InvoiceDetailConfiguration());
-            modelBuilder.Configurations.Add(new RoleConfiguration());
-            modelBuilder.Configurations.Add(new UserConfiguration());
         }
     }
 }
