@@ -29,9 +29,13 @@ namespace FacturatieKMO.DAL.EF
             return customers;
         }
 
+        //Inline query
         public Customer ReadCustomer(int customerId)
         {
-            Customer customer = ctx.Customers.Find(customerId);
+            Customer customer = ctx.Customers.SqlQuery(
+                $"SELECT Id, Name, FirstName, Email, Address, IsDeleted FROM Customer WHERE Id = {customerId}")
+                .FirstOrDefaultAsync().Result;
+
             return customer;
         }
 

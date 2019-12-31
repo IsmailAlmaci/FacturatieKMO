@@ -10,13 +10,6 @@
     <h4>InvoiceDTO</h4>
     <hr />
     <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.InvoiceNr)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.InvoiceNr)
-        </dd>
 
         <dt>
             @Html.DisplayNameFor(model => model.CompanyInfo)
@@ -45,6 +38,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.InvoiceNr }) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
     @Html.ActionLink("Back to List", "Index")
 </p>
