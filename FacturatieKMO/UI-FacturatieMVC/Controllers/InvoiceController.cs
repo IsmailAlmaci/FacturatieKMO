@@ -34,18 +34,12 @@ namespace AP.UI.Web.MVC.Controllers
 
         // POST: Invoice/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(InvoiceDTO invoice)
         {
             try
             {
                 // TODO: Add insert logic here
-                string companyInfo = Request.Form["CompanyInfo"];
-                string customerInfo = Request.Form["CustomerInfo"];
-                DateTime date = DateTime.Now;
-                ICollection<InvoiceDetailDTO> details = null;
-                StatusDTO status = StatusDTO.InProgress;
-
-                mgr.AddInvoice(companyInfo, customerInfo, date, details, status, null);
+                mgr.AddInvoice(invoice);
                 return RedirectToAction("Index");
             }
             catch

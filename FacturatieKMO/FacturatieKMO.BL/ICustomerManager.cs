@@ -6,7 +6,7 @@ namespace FacturatieKMO.BL
     public interface ICustomerManager
     {
         IEnumerable<CustomerDTO> GetCustomers();
-        CustomerDTO AddCustomers(string name, string firstName, string email, string address, ICollection<InvoiceDTO> invoices, bool isDeleted);
+        CustomerDTO AddCustomers(CustomerDTO customer);
         CustomerDTO GetCustomer(int customerId);
         void RemoveCustomer(int customerId);
         void ChangeCustomer(CustomerDTO customer);

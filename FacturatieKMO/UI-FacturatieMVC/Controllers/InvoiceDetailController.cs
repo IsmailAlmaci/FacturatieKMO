@@ -31,12 +31,12 @@ namespace AP.UI.Web.MVC.Controllers
 
         // POST: InvoiceDetails/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(InvoiceDetailDTO invoiceDetail)
         {
             try
             {
                 // TODO: Add insert logic here
-
+                mgr.AddInvoiceDetail(invoiceDetail);
                 return RedirectToAction("Index");
             }
             catch

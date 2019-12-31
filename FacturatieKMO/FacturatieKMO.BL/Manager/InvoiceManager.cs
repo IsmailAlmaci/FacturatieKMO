@@ -17,18 +17,10 @@ namespace FacturatieKMO.BL
             repo = new InvoiceRepository();
         }
 
-        public InvoiceDTO AddInvoice(string companyInfo, string customerInfo, DateTime date, ICollection<InvoiceDetailDTO> details, StatusDTO status, CustomerDTO customer)
+        public InvoiceDTO AddInvoice(InvoiceDTO invoice)
         {
-            ICollection<InvoiceDetail> invoiceDetails = new List<InvoiceDetail>();
-            foreach (InvoiceDetailDTO item in details)
-            {
-                invoiceDetails.Add(MapDTO.Map<InvoiceDetail, InvoiceDetailDTO>(item));
-            }
-
-            Invoice invoice = new Invoice(companyInfo, customerInfo, date, invoiceDetails,
-                MapDTO.Map<Status, StatusDTO>(status), MapDTO.Map<Customer, CustomerDTO>(customer));
-
-            return MapDTO.Map<InvoiceDTO, Invoice>(repo.CreateInvoice(invoice));
+            repo.CreateInvoice(MapDTO.Map<Invoice, InvoiceDTO>(invoice));
+            return invoice;
         }
 
         public InvoiceDTO GetInvoice(int invoiceNr)

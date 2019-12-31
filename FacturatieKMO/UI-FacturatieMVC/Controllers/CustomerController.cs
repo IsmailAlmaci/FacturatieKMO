@@ -32,17 +32,12 @@ namespace AP.UI.Web.MVC.Controllers
 
         // POST: Customer/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(CustomerDTO customer)
         {
             try
             {
                 // TODO: Add insert logic here
-                string name = Request.Form["Name"];
-                string firstName = Request.Form["FirstName"];
-                string email = Request.Form["Email"];
-                string address = Request.Form["Address"];
-
-                mgr.AddCustomers(name, firstName, email, address, null);
+                mgr.AddCustomers(customer);
                 return RedirectToAction("Index");
             }
             catch
@@ -59,18 +54,11 @@ namespace AP.UI.Web.MVC.Controllers
 
         // POST: Customer/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(CustomerDTO customer)
         {
             try
             {
                 // TODO: Add update logic here
-                string name = Request.Form["Name"];
-                string firstName = Request.Form["FirstName"];
-                string email = Request.Form["Email"];
-                string address = Request.Form["Address"];
-
-                CustomerDTO customer = new CustomerDTO(name, firstName, email, address, null);
-
                 mgr.ChangeCustomer(customer);
                 return RedirectToAction("Index");
             }
