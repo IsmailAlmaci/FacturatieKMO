@@ -2,6 +2,7 @@
 
 @{
     ViewBag.Title = "Register";
+    var m = new UI_FacturatieMVC.Models.RegisterViewModel();
 }
 
 <h2>Register</h2>
@@ -16,13 +17,9 @@
     <hr />
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.UserRoles, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.UserRoles, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.UserRoles, "", new { @class = "text-danger" })
-        </div>
-    </div>
+    @Html.DropDownListFor(model => model.SelectedRole,
+                    new SelectList(m.RoleList),
+                    "Select Role")
 
     <div class="form-group">
         @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })

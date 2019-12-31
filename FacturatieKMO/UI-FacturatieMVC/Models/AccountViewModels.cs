@@ -1,5 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using UI_FacturatieMVC.Controllers;
 
 namespace UI_FacturatieMVC.Models
 {
@@ -64,9 +68,11 @@ namespace UI_FacturatieMVC.Models
 
     public class RegisterViewModel
     {
+        public List<string> RoleList { get; set; }
+
+        [Display(Name = "Role")]
         [Required]
-        [Display(Name = "UserRoles")]
-        public string UserRoles { get; set; }
+        public string SelectedRole { get; set; }
 
         [Required]
         [EmailAddress]
@@ -95,6 +101,19 @@ namespace UI_FacturatieMVC.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        public RegisterViewModel()
+        {
+            ApplicationDbContext context = new ApplicationDbContext();
+
+            var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
+            RoleList = new List<string>();
+
+            foreach (var item in roleManager.Roles)
+            {
+                RoleList.Add(item.Name);
+            }
+        }
     }
 
     public class ResetPasswordViewModel

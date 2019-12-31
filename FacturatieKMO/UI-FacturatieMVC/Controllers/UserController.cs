@@ -107,7 +107,7 @@ namespace UI_FacturatieMVC.Controllers
 
             if (result.Succeeded)
             {
-                await UserManager.AddToRoleAsync(user.Id, model.UserRoles);
+                await UserManager.AddToRoleAsync(user.Id, model.SelectedRole);
 
                 await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
 
