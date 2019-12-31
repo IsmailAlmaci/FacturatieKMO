@@ -16,14 +16,14 @@ namespace FacturatieKMO.BL
             repo = new CustomerRepository();
         }
 
-        public CustomerDTO AddCustomers(string name, string firstName, string email, string address, ICollection<InvoiceDTO> invoices)
+        public CustomerDTO AddCustomers(string name, string firstName, string email, string address, ICollection<InvoiceDTO> invoices, bool isDeleted)
         {
             ICollection<Invoice> invoiceList = new List<Invoice>();
             foreach (InvoiceDTO item in invoices)
             {
                 invoiceList.Add(MapDTO.Map<Invoice, InvoiceDTO>(item));
             }
-            Customer customer = new Customer(name, firstName, email, address, invoiceList);
+            Customer customer = new Customer(name, firstName, email, address, invoiceList, isDeleted);
             return MapDTO.Map<CustomerDTO, Customer>(repo.CreateCustomer(customer));
         }
 

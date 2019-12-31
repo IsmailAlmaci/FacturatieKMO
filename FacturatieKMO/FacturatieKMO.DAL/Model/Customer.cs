@@ -10,19 +10,21 @@ namespace FacturatieKMO.DAL.Model
         public string Email { get; set; }
         public string Address { get; set; }
         public ICollection<Invoice> Invoices { get; set; }
+        public bool IsDeleted { get; set; }
 
         public Customer()
         {
 
         }
 
-        public Customer(string name, string firstName, string email, string address, ICollection<Invoice> invoices)
+        public Customer(string name, string firstName, string email, string address, ICollection<Invoice> invoices, bool isDeleted)
         {
             Name = name;
             FirstName = firstName;
             Email = email;
             Address = address;
             Invoices = invoices;
+            IsDeleted = isDeleted;
         }
     }
 }

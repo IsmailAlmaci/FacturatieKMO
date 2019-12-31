@@ -12,11 +12,11 @@ namespace FacturatieKMO.DAL
         internal static List<Customer> GetCustomers()
         {
             List<Customer> customers = new List<Customer>();
-            customers.Add(new Customer("Almaci", "Ismail", "ismail.almaci@student.ap.be", "SGW", null));
-            customers.Add(new Customer("Newell", "Gabe", "gabe.newell@student.ap.be", "LA", null));
-            customers.Add(new Customer("Wilder", "Deontay", "deontay.wilder@student.ap.be", "AL", null));
-            customers.Add(new Customer("Sapp", "Bob", "bob.sapp@student.ap.be", "JP", null));
-            customers.Add(new Customer("Hoost", "Ernesto", "ernesto.hoost@student.ap.be", "NL", null));
+            customers.Add(new Customer("Almaci", "Ismail", "ismail.almaci@student.ap.be", "SGW", null, false));
+            customers.Add(new Customer("Newell", "Gabe", "gabe.newell@student.ap.be", "LA", null, false));
+            customers.Add(new Customer("Wilder", "Deontay", "deontay.wilder@student.ap.be", "AL", null, true));
+            customers.Add(new Customer("Sapp", "Bob", "bob.sapp@student.ap.be", "JP", null, false));
+            customers.Add(new Customer("Hoost", "Ernesto", "ernesto.hoost@student.ap.be", "NL", null, false));
 
             return customers;
         }
