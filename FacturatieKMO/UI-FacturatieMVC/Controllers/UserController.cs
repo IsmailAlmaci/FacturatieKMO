@@ -135,6 +135,11 @@ namespace UI_FacturatieMVC.Controllers
         [HttpPost]
         public async Task<ActionResult> Edit(string id, ApplicationUser model)
         {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
             var store = new UserStore<ApplicationUser>(new ApplicationDbContext());
             var manager = new UserManager<ApplicationUser>(store);
             var currentUser = manager.FindByEmail(model.Email);
