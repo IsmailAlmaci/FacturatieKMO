@@ -71,7 +71,6 @@ namespace UI_FacturatieMVC.Models
         public List<string> RoleList { get; set; }
 
         [Display(Name = "Role")]
-        [Required]
         public string SelectedRole { get; set; }
 
         [Required]

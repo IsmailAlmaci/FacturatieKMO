@@ -135,7 +135,7 @@ namespace UI_FacturatieMVC.Controllers
         [HttpPost]
         public async Task<ActionResult> Edit(string id, ApplicationUser model)
         {
-            if (!ModelState.IsValid)
+            if (!ModelState.IsValid || !id.Equals(User.Identity.GetUserId()))
             {
                 return View(model);
             }
