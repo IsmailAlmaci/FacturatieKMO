@@ -14,6 +14,8 @@ namespace FacturatieKMO.DAL.Configuration
         {
             ToTable("Invoice");
 
+            //Create Stored Procedures for Insert, Update & Delete for table Invoice
+            MapToStoredProcedures();
             Property(i => i.CompanyInfo).HasColumnType("varchar").HasMaxLength(100);
             Property(i => i.CustomerInfo).HasColumnType("varchar").HasMaxLength(100);
             Property(i => i.InvoiceDate).HasColumnType("Date");

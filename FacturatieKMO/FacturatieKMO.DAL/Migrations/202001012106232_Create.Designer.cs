@@ -7,13 +7,13 @@ namespace FacturatieKMO.DAL.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.0")]
-    public sealed partial class Create1 : IMigrationMetadata
+    public sealed partial class Create : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Create1));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Create));
         
         string IMigrationMetadata.Id
         {
-            get { return "201912310324315_Create1"; }
+            get { return "202001012106232_Create"; }
         }
         
         string IMigrationMetadata.Source

@@ -29,11 +29,9 @@ namespace FacturatieKMO.DAL.EF
             return invoices;
         }
 
-        //Stored procedure
         public Invoice ReadInvoice(int invoiceNr)
         {
-            Invoice invoice = ctx.Invoices.SqlQuery("EXEC dbo.GetInvoiceById @Id={0}", invoiceNr)
-                .ToListAsync().Result.FirstOrDefault();
+            Invoice invoice = ctx.Invoices.Find(invoiceNr);
             return invoice;
         }
 

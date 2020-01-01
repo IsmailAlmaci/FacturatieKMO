@@ -29,7 +29,7 @@ namespace FacturatieKMO.DAL.EF
             return customers;
         }
 
-        //Inline query
+        //Inline Query
         public Customer ReadCustomer(int customerId)
         {
             Customer customer = ctx.Customers.SqlQuery(

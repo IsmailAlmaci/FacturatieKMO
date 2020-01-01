@@ -16,6 +16,7 @@
                         FirstName = c.String(maxLength: 100, unicode: false),
                         Email = c.String(maxLength: 100, unicode: false),
                         Address = c.String(maxLength: 200, unicode: false),
+                        IsDeleted = c.Boolean(nullable: false),
                     })
                 .PrimaryKey(t => t.Id);
             
@@ -50,10 +51,66 @@
                 .ForeignKey("dbo.Invoice", t => t.Invoice_Id)
                 .Index(t => t.Invoice_Id);
             
+            CreateStoredProcedure(
+                "dbo.Invoice_Insert",
+                p => new
+                    {
+                        CompanyInfo = p.String(maxLength: 100, unicode: false),
+                        CustomerInfo = p.String(maxLength: 100, unicode: false),
+                        InvoiceDate = p.DateTime(storeType: "date"),
+                        InvoiceStatus = p.Int(),
+                        Customer_Id = p.Int(),
+                    },
+                body:
+                    @"INSERT [dbo].[Invoice]([CompanyInfo], [CustomerInfo], [InvoiceDate], [InvoiceStatus], [Customer_Id])
+                      VALUES (@CompanyInfo, @CustomerInfo, @InvoiceDate, @InvoiceStatus, @Customer_Id)
+                      
+                      DECLARE @Id int
+                      SELECT @Id = [Id]
+                      FROM [dbo].[Invoice]
+                      WHERE @@ROWCOUNT > 0 AND [Id] = scope_identity()
+                      
+                      SELECT t0.[Id]
+                      FROM [dbo].[Invoice] AS t0
+                      WHERE @@ROWCOUNT > 0 AND t0.[Id] = @Id"
+            );
+            
+            CreateStoredProcedure(
+                "dbo.Invoice_Update",
+                p => new
+                    {
+                        Id = p.Int(),
+                        CompanyInfo = p.String(maxLength: 100, unicode: false),
+                        CustomerInfo = p.String(maxLength: 100, unicode: false),
+                        InvoiceDate = p.DateTime(storeType: "date"),
+                        InvoiceStatus = p.Int(),
+                        Customer_Id = p.Int(),
+                    },
+                body:
+                    @"UPDATE [dbo].[Invoice]
+                      SET [CompanyInfo] = @CompanyInfo, [CustomerInfo] = @CustomerInfo, [InvoiceDate] = @InvoiceDate, [InvoiceStatus] = @InvoiceStatus, [Customer_Id] = @Customer_Id
+                      WHERE (([Id] = @Id) AND ([Customer_Id] = @Customer_Id))"
+            );
+            
+            CreateStoredProcedure(
+                "dbo.Invoice_Delete",
+                p => new
+                    {
+                        Id = p.Int(),
+                        Customer_Id = p.Int(),
+                    },
+                body:
+                    @"DELETE [dbo].[Invoice]
+                      WHERE (([Id] = @Id) AND ([Customer_Id] = @Customer_Id))"
+            );
+            
         }
         
         public override void Down()
         {
+            DropStoredProcedure("dbo.Invoice_Delete");
+            DropStoredProcedure("dbo.Invoice_Update");
+            DropStoredProcedure("dbo.Invoice_Insert");
             DropForeignKey("dbo.Invoice", "Customer_Id", "dbo.Customer");
             DropForeignKey("dbo.InvoiceDetail", "Invoice_Id", "dbo.Invoice");
             DropIndex("dbo.InvoiceDetail", new[] { "Invoice_Id" });
