@@ -14,19 +14,28 @@ namespace AP.UI.Web.MVC.Controllers
     [Authorize(Roles = "Admin")]
     public class RoleController : Controller
     {
-        private ApplicationDbContext ctx = new ApplicationDbContext();
+        private ApplicationDbContext ctx;
+        private RoleManager<IdentityRole> roleManager;
+        private IEnumerable<IdentityRole> roles;
+
+
+        public RoleController()
+        {
+            ctx = new ApplicationDbContext();
+            roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(ctx));
+            roles = roleManager.Roles;
+        }
 
         // GET: Role
         public ActionResult Index()
         {
-            IEnumerable<IdentityRole> roles = ctx.Roles.AsEnumerable();
             return View(roles);
         }
 
         // GET: Role/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            return View(roles.ElementAt(id));
         }
 
         // GET: Role/Create
@@ -37,12 +46,12 @@ namespace AP.UI.Web.MVC.Controllers
 
         // POST: Role/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(IdentityRole role)
         {
             try
             {
                 // TODO: Add insert logic here
-
+                ctx.Roles.Add(role);
                 return RedirectToAction("Index");
             }
             catch
@@ -54,17 +63,17 @@ namespace AP.UI.Web.MVC.Controllers
         // GET: Role/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            return View(roles.ElementAt(id));
         }
 
         // POST: Role/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(IdentityRole role)
         {
             try
             {
                 // TODO: Add update logic here
-
+                ctx.Entry(role).State = System.Data.Entity.EntityState.Modified;
                 return RedirectToAction("Index");
             }
             catch
@@ -86,7 +95,7 @@ namespace AP.UI.Web.MVC.Controllers
             try
             {
                 // TODO: Add delete logic here
-
+                ctx.Roles.Remove(ctx.Roles.ElementAt(id));
                 return RedirectToAction("Index");
             }
             catch
