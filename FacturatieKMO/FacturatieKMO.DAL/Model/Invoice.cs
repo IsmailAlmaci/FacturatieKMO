@@ -12,13 +12,14 @@ namespace FacturatieKMO.DAL.Model
         public ICollection<InvoiceDetail> Details { get; set; }
         public Status InvoiceStatus { get; set; }
         public Customer Customer { get; set; }
-
+        public string InvoiceCode { get; set; }
+        public bool IsDeleted { get; set; }
         public Invoice()
         {
 
         }
 
-        public Invoice(string companyInfo, string customerInfo, DateTime invoiceDate, ICollection<InvoiceDetail> details, Status invoiceStatus, Customer customer)
+        public Invoice(string companyInfo, string customerInfo, DateTime invoiceDate, ICollection<InvoiceDetail> details, Status invoiceStatus, Customer customer, string invoiceCode)
         {
             CompanyInfo = companyInfo;
             CustomerInfo = customerInfo;
@@ -26,6 +27,8 @@ namespace FacturatieKMO.DAL.Model
             Details = details;
             InvoiceStatus = invoiceStatus;
             Customer = customer;
+            InvoiceCode = invoiceCode;
+            IsDeleted = false;
         }
     }
 }

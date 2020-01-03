@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace AP.UI.Web.MVC.Controllers
 {
-    [Authorize(Roles ="Admin")]
+    [Authorize(Roles = "Admin, User")]
     public class InvoiceController : Controller
     {
         private IInvoiceManager mgr = new InvoiceManager();
@@ -29,6 +29,14 @@ namespace AP.UI.Web.MVC.Controllers
         // GET: Invoice/Create
         public ActionResult Create()
         {
+            List<string> fullNames = new List<string>();
+            CustomerManager customerManager = new CustomerManager();
+            foreach (CustomerDTO customer in customerManager.GetCustomers())
+            {
+                fullNames.Add(customer.FirstName + " " + customer.Name);
+            }
+
+            ViewBag.Customers = fullNames;
             return View();
         }
 
@@ -39,6 +47,19 @@ namespace AP.UI.Web.MVC.Controllers
             try
             {
                 // TODO: Add insert logic here
+                CustomerManager customerManager = new CustomerManager();
+                InvoiceDTO.Counter++;
+
+                if (InvoiceDTO.LastMonth != invoice.InvoiceDate.Month)
+                {
+                    InvoiceDTO.Counter = 0;
+                    InvoiceDTO.LastMonth = invoice.InvoiceDate.Month;
+                }
+
+                invoice.InvoiceCode = invoice.InvoiceDate.Year.ToString() 
+                    + invoice.InvoiceDate.Month.ToString("00") + "-" + InvoiceDTO.Counter.ToString("0000");
+
+                invoice.Customer = customerManager.GetCustomer(1);
                 mgr.AddInvoice(invoice);
                 return RedirectToAction("Index");
             }
@@ -90,7 +111,17 @@ namespace AP.UI.Web.MVC.Controllers
             try
             {
                 // TODO: Add delete logic here
-                mgr.RemoveInvoice(id);
+                if(mgr.GetInvoice(id).Details == null)
+                {
+                    mgr.RemoveInvoice(id);
+                }
+                else 
+                {
+                    InvoiceDTO invoice = mgr.GetInvoice(id);
+                    invoice.IsDeleted = true;
+                    mgr.ChangeInvoice(invoice);
+                }
+
                 return RedirectToAction("Index");
             }
             catch

@@ -3,6 +3,6 @@
     public enum StatusDTO
     {
         Completed,
-        InProgress
+        InProgress,
     }
 }

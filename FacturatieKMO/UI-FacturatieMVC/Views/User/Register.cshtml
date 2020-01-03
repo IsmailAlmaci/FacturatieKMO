@@ -18,9 +18,9 @@
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
     @Html.DropDownListFor(model => model.SelectedRole,
-                    new SelectList(m.RoleList),
-                    "Select Role")
-
+                            new SelectList(m.RoleList),
+                            "Select Role")
+    
     <div class="form-group">
         @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">

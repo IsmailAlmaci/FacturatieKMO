@@ -2,7 +2,6 @@
 using FacturatieKMO.DAL;
 using FacturatieKMO.DAL.EF;
 using FacturatieKMO.DAL.Model;
-using System;
 using System.Collections.Generic;
 
 namespace FacturatieKMO.BL

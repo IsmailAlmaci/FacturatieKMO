@@ -5,7 +5,7 @@ using System.Web.Mvc;
 
 namespace AP.UI.Web.MVC.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Admin, User")]
     public class InvoiceDetailController : Controller
     {
         private IInvoiceDetailManager mgr = new InvoiceDetailManager();
