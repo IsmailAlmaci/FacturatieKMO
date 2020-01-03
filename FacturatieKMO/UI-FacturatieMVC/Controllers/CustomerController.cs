@@ -76,12 +76,12 @@ namespace AP.UI.Web.MVC.Controllers
 
         // POST: Customer/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(CustomerDTO dto, FormCollection collection)
         {
             try
             {
-                // TODO: Add delete logic here
-                mgr.RemoveCustomer(id);
+                dto.IsDeleted = true;
+                mgr.ChangeCustomer(dto);
                 return RedirectToAction("Index");
             }
             catch
