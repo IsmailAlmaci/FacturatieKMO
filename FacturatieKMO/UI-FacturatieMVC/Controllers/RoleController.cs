@@ -45,10 +45,12 @@ namespace AP.UI.Web.MVC.Controllers
         {
             try
             {
-                // TODO: Add insert logic here
-                IdentityRole role = new IdentityRole();
-                role.Name = collection["Name"];
-                roleManager.Create(role);
+                if (!roleManager.RoleExists(collection["Name"]))
+                {
+                    IdentityRole role = new IdentityRole();
+                    role.Name = collection["Name"];
+                    roleManager.Create(role);
+                }
 
                 return RedirectToAction("Index");
             }
@@ -70,10 +72,12 @@ namespace AP.UI.Web.MVC.Controllers
         {
             try
             {
-                // TODO: Add update logic here
-                IdentityRole role = roleManager.FindById(id);
-                role.Name = collection["Name"];
-                roleManager.Update(role);
+                if(!roleManager.FindById(id).Name.Equals("Admin"))
+                {
+                    IdentityRole role = roleManager.FindById(id);
+                    role.Name = collection["Name"];
+                    roleManager.Update(role);
+                }
 
                 return RedirectToAction("Index");
             }
@@ -95,8 +99,10 @@ namespace AP.UI.Web.MVC.Controllers
         {
             try
             {
-                // TODO: Add delete logic here
-                roleManager.Delete(roleManager.FindById(id));
+                if (!roleManager.FindById(id).Name.Equals("Admin"))
+                {
+                    roleManager.Delete(roleManager.FindById(id));
+                }
                 return RedirectToAction("Index");
             }
             catch
