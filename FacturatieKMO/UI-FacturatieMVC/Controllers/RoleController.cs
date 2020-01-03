@@ -14,28 +14,23 @@ namespace AP.UI.Web.MVC.Controllers
     [Authorize(Roles = "Admin")]
     public class RoleController : Controller
     {
-        private ApplicationDbContext ctx;
         private RoleManager<IdentityRole> roleManager;
-        private IEnumerable<IdentityRole> roles;
-
 
         public RoleController()
         {
-            ctx = new ApplicationDbContext();
-            roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(ctx));
-            roles = roleManager.Roles;
+            roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(new ApplicationDbContext()));
         }
 
         // GET: Role
         public ActionResult Index()
         {
-            return View(roles);
+            return View(roleManager.Roles);
         }
 
         // GET: Role/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details(string id)
         {
-            return View(roles.ElementAt(id));
+            return View(roleManager.FindById(id));
         }
 
         // GET: Role/Create
@@ -46,12 +41,15 @@ namespace AP.UI.Web.MVC.Controllers
 
         // POST: Role/Create
         [HttpPost]
-        public ActionResult Create(IdentityRole role)
+        public ActionResult Create(FormCollection collection)
         {
             try
             {
                 // TODO: Add insert logic here
-                ctx.Roles.Add(role);
+                IdentityRole role = new IdentityRole();
+                role.Name = collection["Name"];
+                roleManager.Create(role);
+
                 return RedirectToAction("Index");
             }
             catch
@@ -61,19 +59,22 @@ namespace AP.UI.Web.MVC.Controllers
         }
 
         // GET: Role/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Edit(string id)
         {
-            return View(roles.ElementAt(id));
+            return View(roleManager.FindById(id));
         }
 
         // POST: Role/Edit/5
         [HttpPost]
-        public ActionResult Edit(IdentityRole role)
+        public ActionResult Edit(string id, FormCollection collection)
         {
             try
             {
                 // TODO: Add update logic here
-                ctx.Entry(role).State = System.Data.Entity.EntityState.Modified;
+                IdentityRole role = roleManager.FindById(id);
+                role.Name = collection["Name"];
+                roleManager.Update(role);
+
                 return RedirectToAction("Index");
             }
             catch
@@ -83,19 +84,19 @@ namespace AP.UI.Web.MVC.Controllers
         }
 
         // GET: Role/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete(string id)
         {
-            return View();
+            return View(roleManager.FindById(id));
         }
 
         // POST: Role/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(string id, FormCollection collection)
         {
             try
             {
                 // TODO: Add delete logic here
-                ctx.Roles.Remove(ctx.Roles.ElementAt(id));
+                roleManager.Delete(roleManager.FindById(id));
                 return RedirectToAction("Index");
             }
             catch
