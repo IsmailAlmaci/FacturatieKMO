@@ -25,19 +25,19 @@ namespace FacturatieKMO.DAL
         {
             List<Invoice> invoices = new List<Invoice>();
             invoices.Add(new Invoice("Wood company", "Wood customer", DateTime.Now, GetInvoiceDetails(),
-                Status.InProgress, GetCustomers().ElementAt(0), ""));
+                Status.InProgress, GetCustomers().ElementAt(0), "code1", false, GetCustomers().ElementAt(0).Name, "Reason1"));
 
             invoices.Add(new Invoice("Iron company", "Iron customer", DateTime.Now, GetInvoiceDetails(),
-                Status.Completed, GetCustomers().ElementAt(1), ""));
+                Status.Completed, GetCustomers().ElementAt(1), "code3", false, GetCustomers().ElementAt(1).Name, "Reason1"));
 
             invoices.Add(new Invoice("Electronics company", "Electronics customer", DateTime.Now, GetInvoiceDetails(),
-                Status.Completed, GetCustomers().ElementAt(2), ""));
+                Status.Completed, GetCustomers().ElementAt(2), "code4", false, GetCustomers().ElementAt(2).Name, "Reason1"));
 
             invoices.Add(new Invoice("Food company", "Food customer", DateTime.Now, GetInvoiceDetails(),
-                Status.InProgress, GetCustomers().ElementAt(3), ""));
+                Status.InProgress, GetCustomers().ElementAt(3), "code5", true, GetCustomers().ElementAt(3).Name, "Reason1"));
 
             invoices.Add(new Invoice("Software company", "Software Customer", DateTime.Now, GetInvoiceDetails(),
-                Status.InProgress, GetCustomers().ElementAt(4), ""));
+                Status.InProgress, GetCustomers().ElementAt(4), "code2", false, GetCustomers().ElementAt(4).Name, "Reason1"));
 
             return invoices;
         }

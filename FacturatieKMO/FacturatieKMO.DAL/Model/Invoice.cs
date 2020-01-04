@@ -21,7 +21,7 @@ namespace FacturatieKMO.DAL.Model
 
         }
 
-        public Invoice(string companyInfo, string customerInfo, DateTime invoiceDate, ICollection<InvoiceDetail> details, Status invoiceStatus, Customer customer, string invoiceCode)
+        public Invoice(string companyInfo, string customerInfo, DateTime invoiceDate, ICollection<InvoiceDetail> details, Status invoiceStatus, Customer customer, string invoiceCode, bool isDeleted, string customerName, string reason)
         {
             CompanyInfo = companyInfo;
             CustomerInfo = customerInfo;
@@ -30,7 +30,9 @@ namespace FacturatieKMO.DAL.Model
             InvoiceStatus = invoiceStatus;
             Customer = customer;
             InvoiceCode = invoiceCode;
-            IsDeleted = false;
+            IsDeleted = isDeleted;
+            CustomerName = customerName;
+            Reason = reason;
         }
     }
 }

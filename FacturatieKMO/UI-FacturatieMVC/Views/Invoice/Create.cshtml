@@ -16,7 +16,7 @@
     <hr />
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
     @Html.DropDownListFor(model => model.CustomerName,
-                    new SelectList(ViewBag.Customers),
+                    new SelectList(FacturatieKMO.BL.Domain.InvoiceDTO.Names),
                     "Select Customer")
 
     <div class="form-group">

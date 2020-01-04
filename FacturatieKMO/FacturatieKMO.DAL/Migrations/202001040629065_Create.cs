@@ -32,6 +32,7 @@
                         InvoiceCode = c.String(maxLength: 100, unicode: false),
                         IsDeleted = c.Boolean(nullable: false),
                         CustomerName = c.String(),
+                        Reason = c.String(),
                         Customer_Id = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
@@ -65,11 +66,12 @@
                         InvoiceCode = p.String(maxLength: 100, unicode: false),
                         IsDeleted = p.Boolean(),
                         CustomerName = p.String(),
+                        Reason = p.String(),
                         Customer_Id = p.Int(),
                     },
                 body:
-                    @"INSERT [dbo].[Invoice]([CompanyInfo], [CustomerInfo], [InvoiceDate], [InvoiceStatus], [InvoiceCode], [IsDeleted], [CustomerName], [Customer_Id])
-                      VALUES (@CompanyInfo, @CustomerInfo, @InvoiceDate, @InvoiceStatus, @InvoiceCode, @IsDeleted, @CustomerName, @Customer_Id)
+                    @"INSERT [dbo].[Invoice]([CompanyInfo], [CustomerInfo], [InvoiceDate], [InvoiceStatus], [InvoiceCode], [IsDeleted], [CustomerName], [Reason], [Customer_Id])
+                      VALUES (@CompanyInfo, @CustomerInfo, @InvoiceDate, @InvoiceStatus, @InvoiceCode, @IsDeleted, @CustomerName, @Reason, @Customer_Id)
                       
                       DECLARE @Id int
                       SELECT @Id = [Id]
@@ -93,11 +95,12 @@
                         InvoiceCode = p.String(maxLength: 100, unicode: false),
                         IsDeleted = p.Boolean(),
                         CustomerName = p.String(),
+                        Reason = p.String(),
                         Customer_Id = p.Int(),
                     },
                 body:
                     @"UPDATE [dbo].[Invoice]
-                      SET [CompanyInfo] = @CompanyInfo, [CustomerInfo] = @CustomerInfo, [InvoiceDate] = @InvoiceDate, [InvoiceStatus] = @InvoiceStatus, [InvoiceCode] = @InvoiceCode, [IsDeleted] = @IsDeleted, [CustomerName] = @CustomerName, [Customer_Id] = @Customer_Id
+                      SET [CompanyInfo] = @CompanyInfo, [CustomerInfo] = @CustomerInfo, [InvoiceDate] = @InvoiceDate, [InvoiceStatus] = @InvoiceStatus, [InvoiceCode] = @InvoiceCode, [IsDeleted] = @IsDeleted, [CustomerName] = @CustomerName, [Reason] = @Reason, [Customer_Id] = @Customer_Id
                       WHERE (([Id] = @Id) AND ([Customer_Id] = @Customer_Id))"
             );
             

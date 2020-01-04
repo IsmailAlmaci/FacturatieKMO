@@ -25,7 +25,7 @@ namespace FacturatieKMO.BL.Domain
             LastMonth = 1;
         }
 
-        public InvoiceDTO(string companyInfo, string customerInfo, DateTime invoiceDate, ICollection<InvoiceDetailDTO> details, StatusDTO invoiceStatus, CustomerDTO customer)
+        public InvoiceDTO(string companyInfo, string customerInfo, DateTime invoiceDate, ICollection<InvoiceDetailDTO> details, StatusDTO invoiceStatus, CustomerDTO customer, string invoiceCode, bool isDeleted, string customerName, string reason)
         {
             CompanyInfo = companyInfo;
             CustomerInfo = customerInfo;
@@ -33,7 +33,10 @@ namespace FacturatieKMO.BL.Domain
             Details = details;
             InvoiceStatus = invoiceStatus;
             Customer = customer;
-            IsDeleted = false;
-       }
+            InvoiceCode = invoiceCode;
+            IsDeleted = isDeleted;
+            CustomerName = customerName;
+            Reason = reason;
+        }
     }
 }

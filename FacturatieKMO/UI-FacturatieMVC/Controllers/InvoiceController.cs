@@ -36,15 +36,13 @@ namespace AP.UI.Web.MVC.Controllers
         public ActionResult Create()
         {
             customerManager = new CustomerManager();
-            InvoiceDTO invoice;
-
             List<string> names = new List<string>();
+
             foreach (CustomerDTO customer in customerManager.GetCustomers())
             {
                 names.Add(customer.Name);
             }
-            ViewBag.Customers = names;
-            invoice = mgr.GetInvoice(1);
+            InvoiceDTO.Names = names;
             return View();
         }
 
@@ -56,7 +54,6 @@ namespace AP.UI.Web.MVC.Controllers
             {
                 CustomerDTO customer = new CustomerDTO();
                 InvoiceDTO.Counter++;
-
                 if (InvoiceDTO.LastMonth != invoice.InvoiceDate.Month)
                 {
                     InvoiceDTO.Counter = 0;
@@ -72,7 +69,6 @@ namespace AP.UI.Web.MVC.Controllers
                         customer = item;
                     }
                 }
-                invoice.Customer = customer;
 
                 mgr.AddInvoice(invoice);
                 return RedirectToAction("Index");
@@ -128,6 +124,7 @@ namespace AP.UI.Web.MVC.Controllers
                 {
                     InvoiceDTO invoice = mgr.GetInvoice(id);
                     invoice.IsDeleted = true;
+                    invoice.Reason = collection["Reason"];
                     mgr.ChangeInvoice(invoice);
                 }
 
