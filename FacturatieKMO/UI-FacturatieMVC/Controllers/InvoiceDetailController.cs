@@ -26,6 +26,8 @@ namespace AP.UI.Web.MVC.Controllers
         // GET: InvoiceDetails/Create
         public ActionResult Create()
         {
+            InvoiceManager invoiceManager = new InvoiceManager();
+            InvoiceDetailDTO.Invoices = invoiceManager.GetInvoices();
             return View();
         }
 

@@ -1,4 +1,6 @@
-﻿namespace FacturatieKMO.BL.Domain
+﻿using System.Collections.Generic;
+
+namespace FacturatieKMO.BL.Domain
 {
     public class InvoiceDetailDTO
     {
@@ -9,6 +11,7 @@
         public int Amount { get; set; }
         public double VAT { get; set; }
         public InvoiceDTO Invoice { get; set; }
+        public static IEnumerable<InvoiceDTO> Invoices { get; set; }
 
         public InvoiceDetailDTO()
         {
