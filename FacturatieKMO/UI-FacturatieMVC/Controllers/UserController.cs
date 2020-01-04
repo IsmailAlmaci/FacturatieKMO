@@ -156,6 +156,7 @@ namespace UI_FacturatieMVC.Controllers
         }
 
         // GET: User/Delete/5
+        /*
         [Authorize(Roles = "Admin")]
         public ActionResult Delete(string id)
         {
@@ -194,7 +195,7 @@ namespace UI_FacturatieMVC.Controllers
                 TempData["UserDeleted"] = "Error Deleting User";
                 return RedirectToAction("Index");
             }
-        }
+        }*/
 
         //
         // GET: /Account/ResetPassword
