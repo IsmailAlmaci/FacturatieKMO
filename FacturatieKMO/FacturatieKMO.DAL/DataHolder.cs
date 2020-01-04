@@ -45,11 +45,11 @@ namespace FacturatieKMO.DAL
         internal static List<InvoiceDetail> GetInvoiceDetails()
         {
             List<InvoiceDetail> invoiceDetails = new List<InvoiceDetail>();
-            invoiceDetails.Add(new InvoiceDetail("Plank", 5, 0, 20, 6));
-            invoiceDetails.Add(new InvoiceDetail("Bar", 50, 10, 200, 6));
-            invoiceDetails.Add(new InvoiceDetail("Laptop", 500, 0, 5, 21));
-            invoiceDetails.Add(new InvoiceDetail("Tomato", .50, 0, 8, 0));
-            invoiceDetails.Add(new InvoiceDetail("MS Office", 150, 0, 1, 21));
+            invoiceDetails.Add(new InvoiceDetail("Plank", 5, 0, 20, 6, null));
+            invoiceDetails.Add(new InvoiceDetail("Bar", 50, 10, 200, 6, null));
+            invoiceDetails.Add(new InvoiceDetail("Laptop", 500, 0, 5, 21, null));
+            invoiceDetails.Add(new InvoiceDetail("Tomato", .50, 0, 8, 0, null));
+            invoiceDetails.Add(new InvoiceDetail("MS Office", 150, 0, 1, 21, null));
 
             return invoiceDetails;
         }

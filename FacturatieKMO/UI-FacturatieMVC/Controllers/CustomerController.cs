@@ -76,7 +76,7 @@ namespace AP.UI.Web.MVC.Controllers
 
         // POST: Customer/Delete/5
         [HttpPost]
-        public ActionResult Delete(CustomerDTO dto, FormCollection collection)
+        public ActionResult Delete(CustomerDTO dto)
         {
             try
             {

@@ -8,18 +8,20 @@
         public double Discount { get; set; }
         public int Amount { get; set; }
         public double VAT { get; set; }
+        public InvoiceDTO Invoice { get; set; }
 
         public InvoiceDetailDTO()
         {
 
         }
-        public InvoiceDetailDTO(string item, double pricePerUnit, double discount, int amount, double vAT)
+        public InvoiceDetailDTO(string item, double pricePerUnit, double discount, int amount, double vAT, InvoiceDTO invoice)
         {
             Item = item;
             PricePerUnit = pricePerUnit;
             Discount = discount;
             Amount = amount;
             VAT = vAT;
+            Invoice = invoice;
         }
     }
 }

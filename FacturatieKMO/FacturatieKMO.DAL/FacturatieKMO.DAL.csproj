@@ -56,9 +56,9 @@
     <Compile Include="Configuration\InvoiceDetailConfiguration.cs" />
     <Compile Include="DataHolder.cs" />
     <Compile Include="IInvoiceDataSource.cs" />
-    <Compile Include="Migrations\202001030646173_Create.cs" />
-    <Compile Include="Migrations\202001030646173_Create.designer.cs">
-      <DependentUpon>202001030646173_Create.cs</DependentUpon>
+    <Compile Include="Migrations\202001032333440_Create.cs" />
+    <Compile Include="Migrations\202001032333440_Create.designer.cs">
+      <DependentUpon>202001032333440_Create.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Repositories\CustomerRepository.cs" />
@@ -85,8 +85,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202001030646173_Create.resx">
-      <DependentUpon>202001030646173_Create.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202001032333440_Create.resx">
+      <DependentUpon>202001032333440_Create.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -29,8 +29,9 @@
                         CustomerInfo = c.String(maxLength: 100, unicode: false),
                         InvoiceDate = c.DateTime(nullable: false, storeType: "date"),
                         InvoiceStatus = c.Int(nullable: false),
-                        InvoiceCode = c.String(),
+                        InvoiceCode = c.String(maxLength: 100, unicode: false),
                         IsDeleted = c.Boolean(nullable: false),
+                        CustomerName = c.String(),
                         Customer_Id = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
@@ -47,10 +48,10 @@
                         Discount = c.Double(nullable: false),
                         Amount = c.Int(nullable: false),
                         VAT = c.Double(nullable: false),
-                        Invoice_Id = c.Int(),
+                        Invoice_Id = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Invoice", t => t.Invoice_Id)
+                .ForeignKey("dbo.Invoice", t => t.Invoice_Id, cascadeDelete: true)
                 .Index(t => t.Invoice_Id);
             
             CreateStoredProcedure(
@@ -61,13 +62,14 @@
                         CustomerInfo = p.String(maxLength: 100, unicode: false),
                         InvoiceDate = p.DateTime(storeType: "date"),
                         InvoiceStatus = p.Int(),
-                        InvoiceCode = p.String(),
+                        InvoiceCode = p.String(maxLength: 100, unicode: false),
                         IsDeleted = p.Boolean(),
+                        CustomerName = p.String(),
                         Customer_Id = p.Int(),
                     },
                 body:
-                    @"INSERT [dbo].[Invoice]([CompanyInfo], [CustomerInfo], [InvoiceDate], [InvoiceStatus], [InvoiceCode], [IsDeleted], [Customer_Id])
-                      VALUES (@CompanyInfo, @CustomerInfo, @InvoiceDate, @InvoiceStatus, @InvoiceCode, @IsDeleted, @Customer_Id)
+                    @"INSERT [dbo].[Invoice]([CompanyInfo], [CustomerInfo], [InvoiceDate], [InvoiceStatus], [InvoiceCode], [IsDeleted], [CustomerName], [Customer_Id])
+                      VALUES (@CompanyInfo, @CustomerInfo, @InvoiceDate, @InvoiceStatus, @InvoiceCode, @IsDeleted, @CustomerName, @Customer_Id)
                       
                       DECLARE @Id int
                       SELECT @Id = [Id]
@@ -88,13 +90,14 @@
                         CustomerInfo = p.String(maxLength: 100, unicode: false),
                         InvoiceDate = p.DateTime(storeType: "date"),
                         InvoiceStatus = p.Int(),
-                        InvoiceCode = p.String(),
+                        InvoiceCode = p.String(maxLength: 100, unicode: false),
                         IsDeleted = p.Boolean(),
+                        CustomerName = p.String(),
                         Customer_Id = p.Int(),
                     },
                 body:
                     @"UPDATE [dbo].[Invoice]
-                      SET [CompanyInfo] = @CompanyInfo, [CustomerInfo] = @CustomerInfo, [InvoiceDate] = @InvoiceDate, [InvoiceStatus] = @InvoiceStatus, [InvoiceCode] = @InvoiceCode, [IsDeleted] = @IsDeleted, [Customer_Id] = @Customer_Id
+                      SET [CompanyInfo] = @CompanyInfo, [CustomerInfo] = @CustomerInfo, [InvoiceDate] = @InvoiceDate, [InvoiceStatus] = @InvoiceStatus, [InvoiceCode] = @InvoiceCode, [IsDeleted] = @IsDeleted, [CustomerName] = @CustomerName, [Customer_Id] = @Customer_Id
                       WHERE (([Id] = @Id) AND ([Customer_Id] = @Customer_Id))"
             );
             

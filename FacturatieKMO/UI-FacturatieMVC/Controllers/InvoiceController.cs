@@ -9,7 +9,13 @@ namespace AP.UI.Web.MVC.Controllers
     [Authorize(Roles = "Admin, User")]
     public class InvoiceController : Controller
     {
-        private IInvoiceManager mgr = new InvoiceManager();
+        private IInvoiceManager mgr;
+        private CustomerManager customerManager;
+
+        public InvoiceController()
+        {
+            mgr = new InvoiceManager();
+        }
 
         // GET: Invoice
         [AllowAnonymous]
@@ -29,14 +35,16 @@ namespace AP.UI.Web.MVC.Controllers
         // GET: Invoice/Create
         public ActionResult Create()
         {
-            List<string> fullNames = new List<string>();
-            CustomerManager customerManager = new CustomerManager();
+            customerManager = new CustomerManager();
+            InvoiceDTO invoice;
+
+            List<string> names = new List<string>();
             foreach (CustomerDTO customer in customerManager.GetCustomers())
             {
-                fullNames.Add(customer.FirstName + " " + customer.Name);
+                names.Add(customer.Name);
             }
-
-            ViewBag.Customers = fullNames;
+            ViewBag.Customers = names;
+            invoice = mgr.GetInvoice(1);
             return View();
         }
 
@@ -46,8 +54,7 @@ namespace AP.UI.Web.MVC.Controllers
         {
             try
             {
-                // TODO: Add insert logic here
-                CustomerManager customerManager = new CustomerManager();
+                CustomerDTO customer = new CustomerDTO();
                 InvoiceDTO.Counter++;
 
                 if (InvoiceDTO.LastMonth != invoice.InvoiceDate.Month)
@@ -58,8 +65,15 @@ namespace AP.UI.Web.MVC.Controllers
 
                 invoice.InvoiceCode = invoice.InvoiceDate.Year.ToString() 
                     + invoice.InvoiceDate.Month.ToString("00") + "-" + InvoiceDTO.Counter.ToString("0000");
+                foreach (var item in customerManager.GetCustomers())
+                {
+                    if(item.Name.Equals(invoice.CustomerName))
+                    {
+                        customer = item;
+                    }
+                }
+                invoice.Customer = customer;
 
-                invoice.Customer = customerManager.GetCustomer(1);
                 mgr.AddInvoice(invoice);
                 return RedirectToAction("Index");
             }
@@ -77,17 +91,10 @@ namespace AP.UI.Web.MVC.Controllers
 
         // POST: Invoice/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(InvoiceDTO invoice)
         {
             try
             {
-                // TODO: Add update logic here
-                InvoiceDTO currentInvoice = mgr.GetInvoice(id);
-                string companyInfo = Request.Form["CompanyInfo"];
-                string customerInfo = Request.Form["CustomerInfo"];
-
-                InvoiceDTO invoice = new InvoiceDTO(companyInfo, customerInfo, 
-                    currentInvoice.InvoiceDate, currentInvoice.Details, currentInvoice.InvoiceStatus, null);
                 mgr.ChangeInvoice(invoice);
 
                 return RedirectToAction("Index");

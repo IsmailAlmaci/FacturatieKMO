@@ -13,7 +13,7 @@ namespace FacturatieKMO.DAL.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "202001030646173_Create"; }
+            get { return "202001032333440_Create"; }
         }
         
         string IMigrationMetadata.Source
