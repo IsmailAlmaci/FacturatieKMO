@@ -20,7 +20,7 @@ namespace AP.UI.Web.MVC.Controllers
         // GET: InvoiceDetails/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            return View(mgr.GetInvoiceDetail(id));
         }
 
         // GET: InvoiceDetails/Create
@@ -35,8 +35,10 @@ namespace AP.UI.Web.MVC.Controllers
         {
             try
             {
-                // TODO: Add insert logic here
-                mgr.AddInvoiceDetail(invoiceDetail);
+                if (!invoiceDetail.Invoice.InvoiceStatus.Equals(StatusDTO.Completed))
+                {
+                    mgr.AddInvoiceDetail(invoiceDetail);
+                }
                 return RedirectToAction("Index");
             }
             catch
@@ -48,16 +50,19 @@ namespace AP.UI.Web.MVC.Controllers
         // GET: InvoiceDetails/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            return View(mgr.GetInvoiceDetail(id));
         }
 
         // POST: InvoiceDetails/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(InvoiceDetailDTO invoiceDetail)
         {
             try
             {
-                // TODO: Add update logic here
+                if (!invoiceDetail.Invoice.InvoiceStatus.Equals(StatusDTO.Completed))
+                {
+                    mgr.ChangeInvoiceDetail(invoiceDetail);
+                }
 
                 return RedirectToAction("Index");
             }
@@ -70,7 +75,7 @@ namespace AP.UI.Web.MVC.Controllers
         // GET: InvoiceDetails/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            return View(mgr.GetInvoiceDetail(id));
         }
 
         // POST: InvoiceDetails/Delete/5
@@ -79,7 +84,10 @@ namespace AP.UI.Web.MVC.Controllers
         {
             try
             {
-                // TODO: Add delete logic here
+                if (!mgr.GetInvoiceDetail(id).Invoice.InvoiceStatus.Equals(StatusDTO.Completed))
+                {
+                    mgr.RemoveInvoiceDetail(id);
+                }
 
                 return RedirectToAction("Index");
             }

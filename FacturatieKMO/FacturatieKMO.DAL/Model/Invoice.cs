@@ -15,6 +15,7 @@ namespace FacturatieKMO.DAL.Model
         public string InvoiceCode { get; set; }
         public bool IsDeleted { get; set; }
         public string CustomerName { get; set; }
+        public string Reason { get; set; }
         public Invoice()
         {
 

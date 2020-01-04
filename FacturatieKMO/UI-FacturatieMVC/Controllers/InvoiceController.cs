@@ -95,8 +95,10 @@ namespace AP.UI.Web.MVC.Controllers
         {
             try
             {
-                mgr.ChangeInvoice(invoice);
-
+                if (!invoice.InvoiceStatus.Equals(StatusDTO.Completed))
+                {
+                    mgr.ChangeInvoice(invoice);
+                }
                 return RedirectToAction("Index");
             }
             catch

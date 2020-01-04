@@ -35,7 +35,16 @@
         <dd>
             @Html.DisplayFor(model => model.InvoiceDate)
         </dd>
+        @if (Model.Details != null)
+        {
+            <dt>
+                @Html.DisplayName("Reason: ")
+            </dt>
 
+            <dd>
+                @Html.DisplayFor(model => model.Reason)
+            </dd>
+        }
     </dl>
 
     @using (Html.BeginForm()) {
